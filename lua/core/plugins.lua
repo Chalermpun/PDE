@@ -70,15 +70,33 @@ return require('packer').startup(function(use)
 	})
 
 	use "jose-elias-alvarez/null-ls.nvim"
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-  use 'mfussenegger/nvim-dap-python'
   use "norcalli/nvim-colorizer.lua"
   use ({"ziontee113/color-picker.nvim",
     config = function()
         require("color-picker")
     end,
       })
+
+
+  use {
+          'mfussenegger/nvim-dap',
+          config = function()
+              require('dap').virtual_text = true
+          end,
+      }
+
+  use {
+          'mfussenegger/nvim-dap-python',
+          requires = {'mfussenegger/nvim-dap'},
+          config = function()
+              require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+          end,
+      }
+
+  use {
+          'rcarriga/nvim-dap-ui',
+          requires = {'mfussenegger/nvim-dap'},
+      }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
