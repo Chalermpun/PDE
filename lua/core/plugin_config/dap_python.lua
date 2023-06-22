@@ -3,7 +3,7 @@ local dap_python = require('dap-python')
 
 dap.adapters.python = {
   type = 'executable',
-  command = '/usr/bin/python',
+  command = '/usr/local/bin/python3',
   args = { '-m', 'debugpy.adapter' },
 }
 
@@ -13,7 +13,7 @@ dap.configurations.python = {
     request = 'launch',
     name = 'Launch file',
     program = '${file}',
-    pythonPath = '/usr/local/bin/python3',
+    pythonPath ='/usr/local/bin/python3'
   },
 }
 
