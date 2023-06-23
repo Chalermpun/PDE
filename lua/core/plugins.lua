@@ -76,17 +76,15 @@ return require('packer').startup(function(use)
         require("color-picker")
     end,
       })
-
-
   use {
           'mfussenegger/nvim-dap',
           config = function()
               require('dap').virtual_text = true
-          end,
-      }
-
+          end
+  }
   use {'mfussenegger/nvim-dap-python', requires = {'mfussenegger/nvim-dap'}}
   use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}}
+	use("vim-scripts/Tabmerge")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
