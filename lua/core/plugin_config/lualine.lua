@@ -15,6 +15,7 @@ require("lualine").setup({
     lualine_y = {
       "progress",
       require("nomodoro").status,
+      {"swenv", icon = " "}
     },
   },
 })
