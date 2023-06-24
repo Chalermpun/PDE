@@ -22,7 +22,7 @@ local on_attach = function(_, bufnr)
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+	nmap("<leader>lds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
 	-- See `:help K` for why this keymap
@@ -72,22 +72,24 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require("mason").setup({
-    opts = {
-      ensure_installed = {
-        "black",
-        "debugpy",
-        "ruff",
-        "isort"
-      },
-    },})
+	opts = {
+		ensure_installed = {
+			"black",
+			"debugpy",
+			"ruff",
+			"isort",
+		},
+	},
+})
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "ruff_lsp",
-  "jedi_language_server",},
+	ensure_installed = {
+		"ruff_lsp",
+		"jedi_language_server",
+	},
 })
 
 mason_lspconfig.setup_handlers({
