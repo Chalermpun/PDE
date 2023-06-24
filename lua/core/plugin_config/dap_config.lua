@@ -20,4 +20,7 @@ vim.keymap.set("n", "di", ":lua require 'dap'.step_into()<CR>")
 vim.keymap.set("n", "dt", ":lua require 'dap'.step_out()<CR>")
 vim.keymap.set("n", "dr", ":lua require 'dap'.restart()<CR>")
 vim.keymap.set("n", "<Leader>B", ":lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+-- vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
 
