@@ -84,17 +84,24 @@ local plugins = {
 	},
 	{ "mfussenegger/nvim-dap-python", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-  'AckslD/swenv.nvim',
-  'stevearc/dressing.nvim',
-"nvim-neotest/neotest-python",
-{
-  "nvim-neotest/neotest",
-  requires = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "antoinemadec/FixCursorHold.nvim"
-  }
-}
+	"AckslD/swenv.nvim",
+	"stevearc/dressing.nvim",
+	"nvim-neotest/neotest-python",
+	{
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+		},
+	},
+
+	"hkupty/iron.nvim",
+
+	-- Git related plugins
+	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
+	"lewis6991/gitsigns.nvim",
 }
 
 require("lazy").setup(plugins, opts)
