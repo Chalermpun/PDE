@@ -84,24 +84,8 @@ local plugins = {
 	},
 	{ "mfussenegger/nvim-dap-python", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-	{
-		"linux-cultist/venv-selector.nvim",
-		dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-		event = "VeryLazy",
-		config = function()
-			require("venv-selector").setup({
-				auto_refresh = false,
-				search_venv_managers = true,
-				search_workspace = true,
-				search = true,
-				dap_enabled = false,
-				parents = 2,
-				name = "venv", -- NOTE: You can also use a lua table here for multiple names: {"venv", ".venv"}`
-				fd_binary_name = "fd",
-				notify_user_on_activate = true,
-			})
-		end,
-	},
+  'AckslD/swenv.nvim',
+  'stevearc/dressing.nvim'
 }
 
 require("lazy").setup(plugins, opts)
