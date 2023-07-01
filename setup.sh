@@ -36,7 +36,6 @@ cp "${current_directory}/.tmux.conf" ~/
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
 source "$HOME/.cargo/env"
-source ~/.zshrc
 cargo install lsd
 
 echo alias ls='lsd' >> ~/.zshrc
