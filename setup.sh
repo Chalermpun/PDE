@@ -4,7 +4,6 @@ sudo apt-get update
 sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3-venv fontconfig
 current_directory=$(pwd)
 
-echo "Zsh and plugins are installing"
 
 # Set Zsh as the default shell
 chsh -s $(which zsh)
@@ -21,26 +20,23 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZS
 sed 's/^plugins=(git/plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting/g' ~/.zshrc > ~/zshrc.txt
 mv ~/zshrc.txt ~/.zshrc
 
-# Print success message
-echo "Zsh and plugins installed successfully. Please restart your terminal."
 
-echo "neovim is installing."
 git clone https://github.com/neovim/neovim
 cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 make install
-echo "neovim finish installed"
 
 mkdir -p ~/.config/nvim
 cp "${current_directory}/init.lua" ~/.config/nvim
 cp -r "${current_directory}/lua" ~/.config/nvim
 
-echo "installing tmux tpm"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp "${current_directory}/.tmux.conf" ~/
 
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-echo "install lsd"
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+source "$HOME/.cargo/env"
+source ~/.zshrc
 cargo install lsd
 
 echo alias ls='lsd' >> ~/.zshrc
