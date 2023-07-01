@@ -39,6 +39,6 @@ require("neo-zoom").setup({
 		},
 	},
 })
-vim.keymap.set("n", "<leader><CR>", function()
+vim.keymap.set("n", "<leader>zz", function()
 	vim.cmd("NeoZoomToggle")
 end, { silent = true, nowait = true })
