@@ -118,6 +118,7 @@ local plugins = {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	"nyngwang/NeoZoom.lua",
 }
 
 require("lazy").setup(plugins, opts)
