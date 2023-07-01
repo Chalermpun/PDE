@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3-venv fontconfig
+sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig
 current_directory=$(pwd)
 
 
