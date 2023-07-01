@@ -102,22 +102,6 @@ local plugins = {
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"lewis6991/gitsigns.nvim",
-
-	-- ChatGPT
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup({
-				api_key_cmd = "pass show openai-api-key",
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
 	"nyngwang/NeoZoom.lua",
 }
 
