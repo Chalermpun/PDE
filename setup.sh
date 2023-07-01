@@ -2,6 +2,7 @@
 
 sudo apt-get update
 sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3-venv fontconfig
+current_directory=$(pwd)
 
 echo "Zsh and plugins are installing"
 
@@ -30,12 +31,12 @@ make install
 echo "neovim finish installed"
 
 mkdir -p ~/.config/nvim
-cp init.lua ~/.config/nvim
-cp -r lua ~/.config/nvim
+cp "${current_directory}/init.lua" ~/.config/nvim
+cp -r "${current_directory}/lua" ~/.config/nvim
 
 echo "installing tmux tpm"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-cp .tmux.conf ~/
+cp "${current_directory}/.tmux.conf" ~/
 
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
