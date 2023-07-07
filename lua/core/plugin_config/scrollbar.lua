@@ -12,10 +12,12 @@ require("scrollbar").setup({
 		Hint = { color = colors.hint },
 		Misc = { color = colors.purple },
 	},
-})
-require("scrollbar.handlers.search").setup({})
-require("hlslens").setup({
-	build_position_cb = function(plist, _, _, _)
-		require("scrollbar.handlers.search").handler.show(plist.start_pos)
-	end,
+	handlers = {
+		cursor = true,
+		diagnostic = false,
+		gitsigns = false, -- Requires gitsigns
+		handle = true,
+		search = true, -- Requires hlslens
+		ale = false, -- Requires ALE
+	},
 })
