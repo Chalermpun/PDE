@@ -1,6 +1,5 @@
 -- Colorscheme
 vim.o.termguicolors = true
-vim.cmd([[ colorscheme carbonfox ]])
-
+vim.cmd([[ colorscheme nightfox ]])
 
 vim.cmd([[highlight Visual guibg=#ffffff guifg=#000000]])

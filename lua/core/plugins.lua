@@ -104,21 +104,23 @@ local plugins = {
 	"lewis6991/gitsigns.nvim",
 
 	"nyngwang/NeoZoom.lua",
-  "petertriho/nvim-scrollbar",
-  {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-},
-{'kevinhwang91/nvim-hlslens'},
-{ 'gen740/SmoothCursor.nvim',
-  config = function()
-    require('smoothcursor').setup()
-  end
-},
-'karb94/neoscroll.nvim',
-{ 'echasnovski/mini.nvim', version = false },
+	"petertriho/nvim-scrollbar",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{ "kevinhwang91/nvim-hlslens" },
+	{
+		"gen740/SmoothCursor.nvim",
+		config = function()
+			require("smoothcursor").setup()
+		end,
+	},
+	"karb94/neoscroll.nvim",
+	{ "echasnovski/mini.nvim", version = false },
+	{ "freddiehaddad/feline.nvim" },
 }
 
 require("lazy").setup(plugins, opts)
