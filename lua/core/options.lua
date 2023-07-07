@@ -4,6 +4,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.opt.splitright = true
 vim.opt.backspace = "2"
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
@@ -29,7 +30,6 @@ vim.wo.wrap = false
 
 -- Enable mouse mode
 vim.o.mouse = "a"
-
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

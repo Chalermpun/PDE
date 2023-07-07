@@ -414,6 +414,24 @@ local c = {
 		provider = file_info,
 		hl = "Comment",
 	},
+
+	swenv = {
+		provider = function()
+			local venv = require("swenv.api").get_current_venv()
+			if venv then
+				return venv.name
+			else
+				return ""
+			end
+		end,
+		icon = "  ",
+		hl = "UserSLGitBranch",
+		right_sep = { str = " ", hl = "UserSLGitBranch" },
+		left_sep = { str = icons.left, hl = "vi_sep_hl" },
+		enabled = function()
+			return get_diag("HINT")
+		end,
+	},
 }
 
 local active = {
@@ -431,6 +449,7 @@ local active = {
 		c.lsp_hint,
 		c.file_type,
 		c.file_enc,
+		c.swenv,
 		c.cur_position,
 		c.cur_percent,
 	},
