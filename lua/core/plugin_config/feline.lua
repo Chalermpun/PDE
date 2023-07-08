@@ -414,7 +414,6 @@ local c = {
 		provider = file_info,
 		hl = "Comment",
 	},
-
 	swenv = {
 		provider = function()
 			local venv = require("swenv.api").get_current_venv()
@@ -432,6 +431,17 @@ local c = {
 			return get_diag("HINT")
 		end,
 	},
+	nomodoro = {
+		provider = function()
+			return require("nomodoro").status()
+		end,
+		icon = " ",
+		hl = "StatusLine",
+		right_sep = { str = " ", hl = "UserSLGitBranch" },
+		enabled = function()
+			return get_diag("HINT")
+		end,
+	},
 }
 
 local active = {
@@ -439,6 +449,7 @@ local active = {
 		c.vimode,
 		c.gitbranch,
 		c.fileinfo,
+		c.nomodoro,
 		c.default, -- must be last
 	},
 	{ -- right
