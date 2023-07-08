@@ -1,7 +1,7 @@
 -- Nomodoro Timer
 require("nomodoro").setup({
-	work_time = 1,
-	break_time = 1,
+	work_time = 25,
+	break_time = 5,
 	menu_available = true,
 	texts = {
 		on_break_complete = "TIME IS UP!",
