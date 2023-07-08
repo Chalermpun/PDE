@@ -143,6 +143,14 @@ local plugins = {
 		end,
 	},
 	{ "kevinhwang91/nvim-bqf" },
+	{
+		"Wansmer/treesj",
+		requires = { "nvim-treesitter" },
+		config = function()
+			require("treesj").setup({ --[[ your config ]]
+			})
+		end,
+	},
 }
 
 require("lazy").setup(plugins, opts)

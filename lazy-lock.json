@@ -49,6 +49,7 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9bc8237565ded606e6c366a71c64c0af25cd7a50" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "776b509f80dd49d8205b9b0d94485568236d1192" },
   "tokyonight.nvim": { "branch": "main", "commit": "284667adfff02b9a0adc65968c553c6096b543b6" },
+  "treesj": { "branch": "main", "commit": "3203aa553217921fd4dcb79245f9df07278910b2" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" }
 }
