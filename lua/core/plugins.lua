@@ -121,14 +121,6 @@ local plugins = {
 	"karb94/neoscroll.nvim",
 	{ "echasnovski/mini.nvim", version = false },
 	{ "freddiehaddad/feline.nvim" },
-	{
-		"phaazon/mind.nvim",
-		branch = "v2.2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("mind").setup()
-		end,
-	},
 }
 
 require("lazy").setup(plugins, opts)
