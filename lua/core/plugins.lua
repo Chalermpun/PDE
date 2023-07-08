@@ -142,6 +142,7 @@ local plugins = {
 			})
 		end,
 	},
+	{ "kevinhwang91/nvim-bqf" },
 }
 
 require("lazy").setup(plugins, opts)
