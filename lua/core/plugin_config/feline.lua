@@ -23,7 +23,6 @@
 -- This assumes that this file is located at `lua/user/ui/feline.lua`
 
 local fmt = string.format
-
 ----------------------------------------------------------------------------------------------------
 -- Colors
 
@@ -414,6 +413,7 @@ local c = {
 		provider = file_info,
 		hl = "Comment",
 	},
+
 	swenv = {
 		provider = function()
 			local venv = require("swenv.api").get_current_venv()
@@ -431,6 +431,7 @@ local c = {
 			return get_diag("HINT")
 		end,
 	},
+
 	nomodoro = {
 		provider = function()
 			return require("nomodoro").status()
@@ -439,7 +440,8 @@ local c = {
 		hl = "StatusLine",
 		right_sep = { str = " ", hl = "UserSLGitBranch" },
 		enabled = function()
-			return get_diag("HINT")
+			local status = require("nomodoro").status()
+			return status ~= "" and status ~= " "
 		end,
 	},
 }

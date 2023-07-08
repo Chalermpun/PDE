@@ -9,12 +9,15 @@ require("nomodoro").setup({
 		status_icon = " ",
 		timer_format = "!%0M:%0S", -- To include hours: '!%0H:%0M:%0S'
 	},
-	on_work_complete = function() end,
-	on_break_complete = function() end,
+	on_work_complete = function()
+		vim.cmd("NomoMenu")
+	end,
+	on_break_complete = function()
+		vim.cmd("NomoMenu")
+	end,
 })
 
 local aopts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<leader>nw", "<cmd>NomoWork<cr>", aopts)
 vim.api.nvim_set_keymap("n", "<leader>nb", "<cmd>NomoBreak<cr>", aopts)
 vim.api.nvim_set_keymap("n", "<leader>ns", "<cmd>NomoStop<cr>", aopts)
-
