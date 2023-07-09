@@ -43,3 +43,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+vim.api.nvim_set_keymap("n", "<leader>t", ":tabnew | terminal<CR>", { noremap = true })
