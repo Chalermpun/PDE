@@ -89,7 +89,7 @@ local plugins = {
 	"nvim-neotest/neotest-python",
 	{
 		"nvim-neotest/neotest",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"antoinemadec/FixCursorHold.nvim",
@@ -123,29 +123,12 @@ local plugins = {
 	{ "freddiehaddad/feline.nvim" },
 	{
 		"nvim-neorg/neorg",
-		-- tag = "*",
 		ft = "norg",
-		after = "nvim-treesitter", -- You may want to specify Telescope here as well
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {}, -- Loads default behaviour
-					["core.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							workspaces = {
-								notes = "~/notes",
-							},
-						},
-					},
-				},
-			})
-		end,
 	},
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"Wansmer/treesj",
-		requires = { "nvim-treesitter" },
+		dependencies = { "nvim-treesitter" },
 		config = function()
 			require("treesj").setup({ --[[ your config ]]
 			})
