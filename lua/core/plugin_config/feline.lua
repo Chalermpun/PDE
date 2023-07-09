@@ -428,11 +428,10 @@ local c = {
 		icon = " ",
 		hl = "StatusLine",
 		right_sep = { str = " ", hl = "UserSLGitBranch" },
-
-		-- enabled = function()
-		-- 	local status = require("nomodoro").status()
-		-- 	return status ~= "" and status ~= " "
-		-- end,
+		enabled = function()
+			local status = require("nomodoro").status()
+			return status ~= "" and status ~= " "
+		end,
 	},
 }
 
