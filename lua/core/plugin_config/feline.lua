@@ -283,16 +283,6 @@ local function file_info()
 	return table.concat(list, " ")
 end
 
-local nomodoro_ = require("nomodoro")
-
-local function check_nomodoro()
-	if string.len(nomodoro_.status()) == 0 then
-		return false
-	else
-		return true
-	end
-end
-
 -- Create a table that contians every status line commonent
 local c = {
 	vimode = {
@@ -417,22 +407,6 @@ local c = {
 			return get_diag("HINT")
 		end,
 	},
-
-	nomodoro = {
-		provider = function()
-			return nomodoro_.status()
-		end,
-		update = function()
-			return check_nomodoro()
-		end,
-		icon = " ",
-		hl = "StatusLine",
-		right_sep = { str = " ", hl = "UserSLGitBranch" },
-		enabled = function()
-			local status = require("nomodoro").status()
-			return status ~= "" and status ~= " "
-		end,
-	},
 }
 
 local active = {
@@ -440,7 +414,6 @@ local active = {
 		c.vimode,
 		c.gitbranch,
 		c.fileinfo,
-		c.nomodoro,
 		c.default, -- must be last
 	},
 	{ -- right
