@@ -145,6 +145,7 @@ local plugins = {
 		end,
 	},
 	"f-person/git-blame.nvim",
+	"rcarriga/nvim-notify",
 }
 
 require("lazy").setup(plugins, opts)
