@@ -1,15 +1,15 @@
 local command = vim.api.nvim_create_user_command
 local nomodoro = require("nomodoro")
-local timer = vim.loop.new_timer()
 local Menu = require("nui.menu")
 local event = require("nui.utils.autocmd").event
-vim.notify = require("notify")
-vim.notify.setup({
-	minimum_width = 15,
-	render = "simple",
-})
 
 local function nomodoro_notify()
+	local timer = vim.loop.new_timer()
+	vim.notify = require("notify")
+	vim.notify.setup({
+		minimum_width = 15,
+		render = "simple",
+	})
 	local notifier = vim.notify(" 󰔟 Starting ..", "info", {
 		title = "  Pomodoro",
 		timeout = false,
@@ -87,12 +87,8 @@ local function show()
 	end, { noremap = true })
 end
 
-local function main()
-	show()
-end
-
 command("NomoWk", function()
-	main()
+	show()
 end, {})
 
 local aopts = { noremap = true, silent = true }
