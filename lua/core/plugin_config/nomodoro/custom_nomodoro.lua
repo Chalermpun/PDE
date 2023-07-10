@@ -114,8 +114,34 @@ local function show()
 	end, { noremap = true })
 end
 
-command("NomoWk", function()
+command("NomoWork", function()
+	if timer and nomodoro.status() ~= "" or nomodoro.status() == "TIME IS UP!" then
+		timer:close()
+		notifier = vim.notify("  TIME IS UP!", "error", {
+			title = " Pomodoro",
+			replace = notifier,
+			timeout = 0,
+		})
+	end
+	nomodoro.start(vim.g.nomodoro.work_time)
+	nomodoro_notify()
+end, {})
+
+command("NomoMenu", function()
 	show()
+end, {})
+
+command("NomoBreak", function()
+	if timer and nomodoro.status() ~= "" or nomodoro.status() == "TIME IS UP!" then
+		timer:close()
+		notifier = vim.notify("  TIME IS UP!", "error", {
+			title = " Pomodoro",
+			replace = notifier,
+			timeout = 0,
+		})
+	end
+	nomodoro.start(vim.g.nomodoro.break_time)
+	nomodoro_notify()
 end, {})
 
 command("NomoTimer", function(opts)
@@ -132,4 +158,4 @@ command("NomoTimer", function(opts)
 end, { nargs = 1 })
 
 local aopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<leader>nw", "<cmd>NomoWk<cr>", aopts)
+vim.api.nvim_set_keymap("n", "<leader>nw", "<cmd>NomoMenu<cr>", aopts)
