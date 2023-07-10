@@ -73,7 +73,7 @@ local function show()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
 						replace = notifier,
-						timeout = 1000,
+						timeout = 0,
 					})
 				end
 				nomodoro.start(vim.g.nomodoro.work_time)
@@ -84,7 +84,7 @@ local function show()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
 						replace = notifier,
-						timeout = 1000,
+						timeout = 0,
 					})
 				end
 				nomodoro.start(vim.g.nomodoro.break_time)
