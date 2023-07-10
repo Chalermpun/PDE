@@ -2,40 +2,41 @@ local command = vim.api.nvim_create_user_command
 local nomodoro = require("nomodoro")
 local Menu = require("nui.menu")
 local event = require("nui.utils.autocmd").event
+vim.notify = require("notify")
+vim.notify.setup({
+	minimum_width = 15,
+	render = "simple",
+})
 
 local function nomodoro_notify()
 	local timer = vim.loop.new_timer()
-	vim.notify = require("notify")
-	vim.notify.setup({
-		minimum_width = 15,
-		render = "simple",
-	})
-	local notifier = vim.notify(" 󰔟 Starting ..", "info", {
+	local notifier
+
+	notifier = vim.notify(" 󰔟 Starting ..", "info", {
 		title = "  Pomodoro",
 		timeout = false,
 	})
 
-	timer:start(
-		1000,
-		1000,
-		vim.schedule_wrap(function()
-			notifier = vim.notify("   " .. nomodoro.status() .. "", "info", {
+	local function updateStatus()
+		local status = nomodoro.status()
+		notifier = vim.notify("   " .. status .. "", "info", {
+			replace = notifier,
+		})
+
+		if status == "TIME IS UP!" or status == "" then
+			timer:close()
+			notifier = vim.notify("  TIME IS UP!", "error", {
+				title = " Pomodoro",
 				replace = notifier,
+				timeout = 1000,
 			})
-			if nomodoro.status() == "TIME IS UP!" or string.len(nomodoro.status()) == 0 then
-				timer:close()
-				notifier = vim.notify("  TIME IS UP!", "error", {
-					title = " Pomodoro",
-					replace = notifier,
-					timeout = 1000,
-				})
-			end
-		end)
-	)
+		end
+	end
+
+	timer:start(1000, 1000, vim.schedule_wrap(updateStatus))
 end
 
 local function on_close() end
-
 local function show()
 	local popup_options = {
 		border = {
@@ -57,6 +58,7 @@ local function show()
 			submit = { "<CR>", "<Space>" },
 		},
 		lines = {
+			Menu.item("Continue"),
 			Menu.item("Start Work"),
 			Menu.item("Start Break"),
 			Menu.item("Stop"),
@@ -71,6 +73,12 @@ local function show()
 				nomodoro_notify()
 			elseif item.text == "Stop" then
 				nomodoro.stop()
+			elseif item.text == "Continue" then
+				if nomodoro.status() == "" then
+					nomodoro.start(vim.g.nomodoro.work_time)
+					nomodoro_notify()
+				else
+				end
 			end
 		end,
 	}
