@@ -21,7 +21,7 @@ local function nomodoro_notify()
 
 	local function updateStatus()
 		local status = nomodoro.status()
-		notifier = vim.notify("   " .. status .. "", "info", {
+		notifier = vim.notify("  " .. status .. "", "info", {
 			replace = notifier,
 		})
 
@@ -117,6 +117,19 @@ end
 command("NomoWk", function()
 	show()
 end, {})
+
+command("NomoTimer", function(opts)
+	if timer and nomodoro.status() ~= "" or nomodoro.status() == "TIME IS UP!" then
+		timer:close()
+		notifier = vim.notify("  TIME IS UP!", "error", {
+			title = " Pomodoro",
+			replace = notifier,
+			timeout = 0,
+		})
+	end
+	nomodoro.start(opts.args)
+	nomodoro_notify()
+end, { nargs = 1 })
 
 local aopts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<leader>nw", "<cmd>NomoWk<cr>", aopts)
