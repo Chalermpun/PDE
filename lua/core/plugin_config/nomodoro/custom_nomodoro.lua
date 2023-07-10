@@ -32,6 +32,7 @@ local function nomodoro_notify()
 				replace = notifier,
 				timeout = 1000,
 			})
+			nomodoro.stop()
 		end
 	end
 
@@ -68,7 +69,7 @@ local function show()
 		on_close = on_close,
 		on_submit = function(item)
 			if item.text == "Start Work" then
-				if timer and nomodoro.status() ~= "" then
+				if timer and nomodoro.status() ~= "" or nomodoro.status() == "TIME IS UP!" then
 					timer:close()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
@@ -79,7 +80,7 @@ local function show()
 				nomodoro.start(vim.g.nomodoro.work_time)
 				nomodoro_notify()
 			elseif item.text == "Start Break" then
-				if timer and nomodoro.status() ~= "" then
+				if timer and nomodoro.status() ~= "" or nomodoro.status() == "TIME IS UP!" then
 					timer:close()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
