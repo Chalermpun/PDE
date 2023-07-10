@@ -68,7 +68,7 @@ local function show()
 		on_close = on_close,
 		on_submit = function(item)
 			if item.text == "Start Work" then
-				if timer then
+				if timer and nomodoro.status() ~= "" then
 					timer:close()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
@@ -79,7 +79,7 @@ local function show()
 				nomodoro.start(vim.g.nomodoro.work_time)
 				nomodoro_notify()
 			elseif item.text == "Start Break" then
-				if timer then
+				if timer and nomodoro.status() ~= "" then
 					timer:close()
 					notifier = vim.notify("  TIME IS UP!", "error", {
 						title = " Pomodoro",
