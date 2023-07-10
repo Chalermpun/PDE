@@ -42,7 +42,7 @@ echo alias ls='lsd' >> ~/.zshrc
 
 
 declare -a fonts=(
-    AnonymousPro
+    JetBrainsMono
 )
 
 version='3.0.2'
