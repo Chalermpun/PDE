@@ -2,6 +2,9 @@ local command = vim.api.nvim_create_user_command
 local nomodoro = require("nomodoro")
 local Menu = require("nui.menu")
 local event = require("nui.utils.autocmd").event
+local timer
+local notifier
+
 vim.notify = require("notify")
 vim.notify.setup({
 	minimum_width = 15,
@@ -9,8 +12,7 @@ vim.notify.setup({
 })
 
 local function nomodoro_notify()
-	local timer = vim.loop.new_timer()
-	local notifier
+	timer = vim.loop.new_timer()
 
 	notifier = vim.notify(" 󰔟 Starting ..", "info", {
 		title = "  Pomodoro",
@@ -66,9 +68,25 @@ local function show()
 		on_close = on_close,
 		on_submit = function(item)
 			if item.text == "Start Work" then
+				if timer then
+					timer:close()
+					notifier = vim.notify("  TIME IS UP!", "error", {
+						title = " Pomodoro",
+						replace = notifier,
+						timeout = 1000,
+					})
+				end
 				nomodoro.start(vim.g.nomodoro.work_time)
 				nomodoro_notify()
 			elseif item.text == "Start Break" then
+				if timer then
+					timer:close()
+					notifier = vim.notify("  TIME IS UP!", "error", {
+						title = " Pomodoro",
+						replace = notifier,
+						timeout = 1000,
+					})
+				end
 				nomodoro.start(vim.g.nomodoro.break_time)
 				nomodoro_notify()
 			elseif item.text == "Stop" then
