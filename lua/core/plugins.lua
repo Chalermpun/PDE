@@ -150,6 +150,7 @@ local plugins = {
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	"christoomey/vim-tmux-navigator",
 }
 
 require("lazy").setup(plugins, opts)
