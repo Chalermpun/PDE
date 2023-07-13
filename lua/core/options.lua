@@ -45,3 +45,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_set_keymap("n", "<leader>t", ":tabnew | terminal<CR>", { noremap = true })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.norg" },
+	command = "set conceallevel=3",
+})
