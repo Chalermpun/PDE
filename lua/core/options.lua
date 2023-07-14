@@ -44,4 +44,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
-vim.api.nvim_set_keymap("n", "<leader>t", ":tabnew | terminal<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>t", ":tabnew | terminal<CR>", { noremap = true })
