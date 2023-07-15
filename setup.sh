@@ -64,3 +64,5 @@ done
 find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 fc-cache -fv
+
+# don't forget setting system-site-package for jedi-language-server-protocal (lsp-config)
