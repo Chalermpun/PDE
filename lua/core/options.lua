@@ -13,7 +13,7 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+vim.opt.spell = false
 
 -- use spaces for tabs and whatnot
 vim.opt.tabstop = 2
