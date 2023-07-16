@@ -2,7 +2,7 @@
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
 	-- Add languages to be installed here that you want installed for treesitter
-	ensure_installed = { "c", "python", "rust", "vim", "lua"},
+	ensure_installed = { "c", "python", "rust", "vim", "lua" },
 
 	highlight = { enable = true },
 	indent = { enable = true, disable = { "python" } },
@@ -57,6 +57,12 @@ require("nvim-treesitter.configs").setup({
 			swap_previous = {
 				["<leader>A"] = "@parameter.inner",
 			},
+		},
+		autopairs = {
+			enable = true,
+		},
+		autotag = {
+			enable = true,
 		},
 	},
 })

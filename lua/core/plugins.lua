@@ -155,6 +155,43 @@ local plugins = {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	-- packer boostrapping code
+	{
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
+	},
+	{ "tamton-aquib/zone.nvim" },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+	"xiyaowong/transparent.nvim",
+	"dstein64/vim-startuptime",
+	{
+		"goolord/alpha-nvim",
+		event = "VimEnter",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	"ThePrimeagen/harpoon",
 }
 
+local opts = {}
 require("lazy").setup(plugins, opts)
