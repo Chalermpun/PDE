@@ -20,6 +20,6 @@ dashboard.section.buttons.val = {
 	dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 dashboard.section.header.opts.hl = "AlphaHeader"
-dashboard.opts.layout[1].val = 6
+dashboard.opts.layout[1].val = 1
 
 alpha.setup(dashboard.opts)
