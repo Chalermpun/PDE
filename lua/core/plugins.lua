@@ -191,6 +191,7 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	"ThePrimeagen/harpoon",
+	"rafamadriz/friendly-snippets",
 }
 
 local opts = {}
