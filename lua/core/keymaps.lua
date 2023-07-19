@@ -14,5 +14,3 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 vim.keymap.set("n", "<leader>ddh", vim.diagnostic.hide)
 vim.keymap.set("n", "<leader>dds", vim.diagnostic.show)
-
-vim.keymap.set("n", "E", ":WinResizerStartResize")
