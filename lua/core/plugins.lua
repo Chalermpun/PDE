@@ -192,6 +192,7 @@ local plugins = {
 	},
 	"ThePrimeagen/harpoon",
 	"rafamadriz/friendly-snippets",
+	{ "derektata/lorem.nvim" },
 }
 
 local opts = {}
