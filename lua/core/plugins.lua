@@ -193,6 +193,7 @@ local plugins = {
 	"ThePrimeagen/harpoon",
 	"rafamadriz/friendly-snippets",
 	{ "derektata/lorem.nvim" },
+	"simeji/winresizer",
 }
 
 local opts = {}
