@@ -1,5 +1,5 @@
 require("zone").setup({
-	style = "treadmill",
+	style = "vanish",
 	after = 60, -- Idle timeout
 	exclude_filetypes = { "TelescopePrompt", "NvimTree", "neo-tree", "dashboard", "lazy" },
 	-- More options to come later
