@@ -202,6 +202,15 @@ local plugins = {
 			require("telescope").load_extension("live_grep_args")
 		end,
 	},
+	{
+		"phaazon/hop.nvim",
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	},
+	"mfussenegger/nvim-treehopper",
+	"ziontee113/syntax-tree-surfer",
 }
 
 local opts = {}
