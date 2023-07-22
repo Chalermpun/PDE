@@ -193,6 +193,15 @@ local plugins = {
 	"ThePrimeagen/harpoon",
 	"rafamadriz/friendly-snippets",
 	{ "derektata/lorem.nvim" },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+		config = function()
+			require("telescope").load_extension("live_grep_args")
+		end,
+	},
 }
 
 local opts = {}

@@ -27,7 +27,7 @@ vim.keymap.set("n", "<c-p>", builtin.find_files, {})
 vim.keymap.set("n", "<Space><Space>", builtin.oldfiles, {})
 vim.keymap.set("n", "<Space>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<Space>fh", builtin.help_tags, {})
-
+vim.keymap.set("n", "<leader>fs", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true })
 
 -- open file_browser with the path of the current buffer
