@@ -222,6 +222,7 @@ local plugins = {
 		},
 	},
 	"marko-cerovac/material.nvim",
+	"mg979/vim-visual-multi",
 }
 
 local opts = {}
