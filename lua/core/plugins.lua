@@ -221,6 +221,7 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
+	"marko-cerovac/material.nvim",
 }
 
 local opts = {}
