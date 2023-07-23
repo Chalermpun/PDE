@@ -211,6 +211,16 @@ local plugins = {
 	},
 	"mfussenegger/nvim-treehopper",
 	"ziontee113/syntax-tree-surfer",
+	"liuchengxu/vista.vim",
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 }
 
 local opts = {}
