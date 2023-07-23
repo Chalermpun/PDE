@@ -211,7 +211,6 @@ local plugins = {
 	},
 	"mfussenegger/nvim-treehopper",
 	"ziontee113/syntax-tree-surfer",
-	"liuchengxu/vista.vim",
 	{
 		"stevearc/aerial.nvim",
 		opts = {},
