@@ -27,6 +27,8 @@ vim.opt.guicursor = {
 }
 
 vim.cmd([[ set noswapfile ]])
+-- Set cursor color to yellow
+vim.cmd("highlight Cursor guifg=yellow guibg=yellow")
 
 --Line numbers
 vim.wo.number = true
