@@ -33,6 +33,7 @@ local plugins = {
 	"freddiehaddad/feline.nvim",
 	"EdenEast/nightfox.nvim",
 	"tamton-aquib/zone.nvim",
+  'mg979/vim-visual-multi',
 
 	----------------------------------------------------------------
 
@@ -61,10 +62,16 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", cond = vim.fn.executable("make") == 1 },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				cond = vim.fn.executable("make") == 1,
+			},
 			{
 				"nvim-telescope/telescope-file-browser.nvim",
-				dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+				dependencies = {
+					"nvim-telescope/telescope.nvim",
+					"nvim-lua/plenary.nvim",
+				},
 			},
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			config = function()
@@ -172,12 +179,23 @@ local plugins = {
 
 	{
 		"phaazon/hop.nvim",
-		dependencies = { "ziontee113/syntax-tree-surfer", "mfussenegger/nvim-treehopper" },
+		dependencies = {
+			"ziontee113/syntax-tree-surfer",
+			"mfussenegger/nvim-treehopper",
+		},
 		config = function()
 			-- you can configure Hop the way you like here; see :h hop-config
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	},
+
+	{
+		"ziontee113/color-picker.nvim",
+		config = function()
+			require("color-picker")
+		end,
+	},
+  
 
 	--------------------------------------------------------------
 
@@ -220,13 +238,6 @@ local plugins = {
 		"gen740/SmoothCursor.nvim",
 		config = function()
 			require("smoothcursor").setup()
-		end,
-	},
-
-	{
-		"ziontee113/color-picker.nvim",
-		config = function()
-			require("color-picker")
 		end,
 	},
 }

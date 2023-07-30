@@ -49,3 +49,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- Define the VM_maps table and set the key-value pairs
+vim.g.VM_maps = {
+	["Find Under"] = "<C-m>", -- replace C-n
+	["Find Subword Under"] = "<C-m>", -- replace visual C-n
+	["Select Cursor Down"] = "<M-C-Down>", -- start selecting down
+	["Select Cursor Up"] = "<M-C-Up>", -- start selecting up
+}
