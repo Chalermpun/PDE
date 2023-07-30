@@ -54,6 +54,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.g.VM_maps = {
 	["Find Under"] = "<C-m>", -- replace C-n
 	["Find Subword Under"] = "<C-m>", -- replace visual C-n
-	["Select Cursor Down"] = "<M-C-Down>", -- start selecting down
-	["Select Cursor Up"] = "<M-C-Up>", -- start selecting up
+	["Select Cursor Down"] = "<M-C-j>", -- start selecting down
+	["Select Cursor Up"] = "<M-C-k>", -- start selecting up
 }

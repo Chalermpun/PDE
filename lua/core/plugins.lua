@@ -33,7 +33,7 @@ local plugins = {
 	"freddiehaddad/feline.nvim",
 	"EdenEast/nightfox.nvim",
 	"tamton-aquib/zone.nvim",
-  'mg979/vim-visual-multi',
+	"mg979/vim-visual-multi",
 
 	----------------------------------------------------------------
 
@@ -195,7 +195,6 @@ local plugins = {
 			require("color-picker")
 		end,
 	},
-  
 
 	--------------------------------------------------------------
 
