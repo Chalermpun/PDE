@@ -176,8 +176,10 @@ local plugins = {
 	{ "tamton-aquib/zone.nvim" },
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {},
+		-- event = "VeryLazy",
+		opts = {
+			background_colour = "#000000",
+		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
