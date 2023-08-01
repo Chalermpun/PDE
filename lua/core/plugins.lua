@@ -34,6 +34,7 @@ local plugins = {
 	"EdenEast/nightfox.nvim",
 	"tamton-aquib/zone.nvim",
 	"mg979/vim-visual-multi",
+	"catppuccin/nvim",
 
 	----------------------------------------------------------------
 
