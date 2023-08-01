@@ -37,31 +37,6 @@ vim.keymap.set("n", "yl", function()
 	end)
 end, opts)
 
--- NOTE: Hyper Yank Treesitter Code Block
-vim.keymap.set("n", "yc", function()
-	local original_buffer = vim.api.nvim_get_current_buf()
-	vim.cmd([[:HopLineStartMW]])
-	vim.schedule(function()
-		require("tsht").nodes()
-		vim.schedule(function()
-			vim.cmd([[normal! V]]) --> go to visual selection mode -> optional
-			vim.cmd([[normal! y]]) --> yank
-			jump_back_to_original_buffer(original_buffer)
-		end)
-	end)
-end, opts)
-
--- NOTE: Using nvim-treehopper to yank
-vim.keymap.set("n", "ym", function()
-	require("tsht").nodes()
-	vim.schedule(function()
-		vim.cmd([[normal! V]]) --> go to visual selection mode
-		vim.cmd([[normal! y]]) --> yank
-	end)
-end, opts)
-
---SECTION: Hyper Paste
-
 vim.keymap.set("n", "vp", function()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
@@ -90,17 +65,6 @@ vim.keymap.set("n", "<Leader>vP", function()
 		vim.cmd([[normal! P]]) --> paste
 	end)
 end, opts)
-
---------------------
---------------------
---------------------
---------------------
---------------------
---------------------
---------------------
---------------------
---------------------
--- VIDEO 1: NOTE: Hop to create new lines
 
 vim.keymap.set("n", "vo", function()
 	vim.cmd([[:HopLineStart]])
@@ -157,14 +121,8 @@ end, opts)
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "f", function()
-	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-end, { remap = true })
-vim.keymap.set("", "F", function()
-	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+	hop.hint_char1({ current_line_only = true })
 end, { remap = true })
 vim.keymap.set("", "t", function()
-	hop.hint_words({ direction = directions.AFTER_CURSOR, current_line_only = false })
-end, { remap = true })
-vim.keymap.set("", "T", function()
-	hop.hint_words({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+	hop.hint_words({ current_line_only = false })
 end, { remap = true })
