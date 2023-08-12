@@ -1,0 +1,8 @@
+require("core.plugin_config.BCE.minimap")
+require("core.plugin_config.BCE.scrollbar")
+require("core.plugin_config.BCE.alpha")
+require("core.plugin_config.BCE.window")
+require("core.plugin_config.BCE.neoscroll")
+require("core.plugin_config.BCE.ufo")
+require("core.plugin_config.BCE.indent_blankline")
+require("core.plugin_config.BCE.wilder")

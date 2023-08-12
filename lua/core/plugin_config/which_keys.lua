@@ -1,5 +1,6 @@
 vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
+vim.keymap.set("n", "<leader>at", "<cmd>lua require('hlargs').toggle()<cr>", { desc = "Highlight Args" })
 vim.keymap.set(
 	"n",
 	"<leader><leader>",
@@ -70,6 +71,13 @@ local mappings_leader = {
 		f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope Find Files" },
 		b = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", "Telescope File Browser" },
 		m = { vim.lsp.buf.format, "LSP formatting" },
+	},
+
+	m = {
+		name = "Minimap",
+		o = { "<cmd>lua require('mini.map').open()<cr>", "Minimap Open" },
+		c = { "<cmd>lua require('mini.map').close()<cr>", "Minimap Close" },
+		f = { "<cmd>lua require('mini.map').toggle_focus()<cr>", "Minimap Focus" },
 	},
 
 	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },

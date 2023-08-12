@@ -32,3 +32,8 @@ vim.wo.wrap = false
 vim.o.mouse = "a"
 vim.o.termguicolors = true
 
+-- Folding
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

@@ -14,9 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	"christoomey/vim-tmux-navigator",
 	"folke/which-key.nvim",
+	"catppuccin/nvim",
 
-	-- Directory Management
-	{
+	{ -- Directory Management
 		{
 			"stevearc/oil.nvim",
 			opts = {},
@@ -187,6 +187,75 @@ local plugins = {
 				"nvim-tree/nvim-web-devicons",
 			},
 			config = true,
+		},
+	},
+
+	{ -- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		{
+			"m-demare/hlargs.nvim",
+			config = function()
+				require("hlargs").setup()
+			end,
+		},
+	},
+
+	{ -- BCE
+		"karb94/neoscroll.nvim",
+		"lukas-reineke/indent-blankline.nvim",
+		{
+			"gelguy/wilder.nvim",
+			build = ":UpdateRemotePlugins",
+			dependencies = {
+				"roxma/nvim-yarp",
+				"roxma/vim-hug-neovim-rpc",
+				"nixprime/cpsm",
+				"romgrk/fzy-lua-native",
+				"sharkdp/fd",
+			},
+		},
+		{
+			"echasnovski/mini.map",
+			branch = "stable",
+			event = "BufWinEnter",
+			dependencies = { "dstein64/nvim-scrollview", enabled = false },
+		},
+
+		{
+			"petertriho/nvim-scrollbar",
+			dependencies = {
+				"kevinhwang91/nvim-hlslens",
+				"folke/tokyonight.nvim",
+				lazy = false,
+				priority = 1000,
+				opts = {},
+			},
+		},
+
+		{
+			"goolord/alpha-nvim",
+			event = "VimEnter",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+		},
+
+		{
+			"anuvyklack/windows.nvim",
+			dependencies = {
+				"anuvyklack/middleclass",
+				"anuvyklack/animation.nvim",
+			},
+		},
+
+		{
+			"gen740/SmoothCursor.nvim",
+			config = function()
+				require("smoothcursor").setup()
+			end,
+		},
+		{
+			"kevinhwang91/nvim-ufo",
+			dependencies = { "kevinhwang91/promise-async" },
 		},
 	},
 }
