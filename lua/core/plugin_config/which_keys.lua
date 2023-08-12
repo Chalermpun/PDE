@@ -20,6 +20,51 @@ vim.keymap.set("n", "<leader>tq", function()
 	require("trouble").open("quickfix")
 end, { desc = "Trouble Quickfix" })
 
+vim.keymap.set("n", "<leader>zz", function()
+	vim.cmd("NeoZoomToggle")
+end, { silent = true, nowait = true, desc = "NeoZoom" })
+
+-- Bufferline keymap
+vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
+vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader><Tab>",
+	":BufferLineMoveNext<CR>",
+	{ noremap = true, desc = "BufferLineMoveNext" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader><S-Tab>",
+	":BufferLineMovePrev<CR>",
+	{ noremap = true, desc = "BufferLineCyclePrev" }
+)
+
+vim.keymap.set("n", "bd", "<cmd>:Bdelete<cr>", { desc = "Bdelete" })
+
+require("spectre").setup()
+vim.keymap.set("n", "<leader>ss", '<cmd>lua require("spectre").toggle()<CR>', {
+	desc = "Toggle Spectre",
+})
+
+vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+	desc = "Search current word",
+})
+vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+	desc = "Search current word",
+})
+vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+	desc = "Search on current file",
+})
+
+vim.keymap.set("n", "<Leader>vs", ":lua require('swenv.api').pick_venv()<CR>", { desc = "Switch Python Environment" })
+
+-- iron also has a list of commands, see :h iron-commands for all available commands
+vim.keymap.set("n", "<space>rs", "<cmd>IronRepl<cr>", { desc = "IronRepl" })
+vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>", { desc = "IronRestart" })
+vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>", { desc = "IronFocus" })
+vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>", { desc = "IronHide" })
+
 local whichkey = require("which-key")
 local conf = {
 	window = {
@@ -92,18 +137,18 @@ local mappings_leader = {
 	w = { "<cmd>wa<cr>", "Save All" },
 	x = {
 		name = "External",
-		p = { "<cmd>lua require('core.plugin_config.toggleterm.term').project_info_toggle()<CR>", "Project Info" },
-		s = { "<cmd>lua require('core.plugin_config.toggleterm.term').system_info_toggle()<CR>", "System Info" },
-		c = { "<cmd>lua require('core.plugin_config.toggleterm.term').cht()<CR>", "Cheatsheet" },
+		p = { "<cmd>lua require('core.plugin_config.Terminal.term').project_info_toggle()<CR>", "Project Info" },
+		s = { "<cmd>lua require('core.plugin_config.Terminal.term').system_info_toggle()<CR>", "System Info" },
+		c = { "<cmd>lua require('core.plugin_config.Terminal.term').cht()<CR>", "Cheatsheet" },
 		i = {
-			"<cmd>lua require('core.plugin_config.toggleterm.term').interactive_cheatsheet_toggle()<CR>",
+			"<cmd>lua require('core.plugin_config.Terminal.term').interactive_cheatsheet_toggle()<CR>",
 			"Interactive Cheatsheet",
 		},
 		o = {
-			"<cmd>lua require('core.plugin_config.toggleterm.term').so()<CR>",
+			"<cmd>lua require('core.plugin_config.Terminal.term').so()<CR>",
 			"Stack Overflow",
 		},
-		d = { "<cmd>lua require('core.plugin_config.toggleterm.term').docker_client_toggle()<CR>", "Docker" },
+		d = { "<cmd>lua require('core.plugin_config.Terminal.term').docker_client_toggle()<CR>", "Docker" },
 	},
 }
 

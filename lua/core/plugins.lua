@@ -16,26 +16,11 @@ local plugins = {
 	"folke/which-key.nvim",
 
 	{ -- Directory Management
+
 		{
 			"stevearc/oil.nvim",
 			opts = {},
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-		},
-
-		{
-			"ThePrimeagen/harpoon",
-			config = function()
-				local harpoon_status_ok, harpoon = pcall(require, "harpoon")
-				if not harpoon_status_ok then
-					return
-				end
-
-				harpoon.setup({
-					menu = {
-						width = 60,
-					},
-				})
-			end,
 		},
 		{
 			"nvim-neo-tree/neo-tree.nvim",
@@ -48,13 +33,35 @@ local plugins = {
 	},
 
 	{ -- Terminal Plugin
-		"akinsho/toggleterm.nvim",
-		keys = { [[<C-\>]] },
-		cmd = { "ToggleTerm", "TermExec" },
-		module = { "toggleterm", "toggleterm.terminal" },
-		config = function()
-			require("core.plugin_config.toggleterm.toggleterm").setup()
-		end,
+		"hkupty/iron.nvim",
+
+		{
+			"akinsho/toggleterm.nvim",
+			keys = { [[<C-\>]] },
+			cmd = { "ToggleTerm", "TermExec" },
+			module = { "toggleterm", "toggleterm.terminal" },
+			config = function()
+				require("core.plugin_config.Terminal.toggleterm").setup()
+			end,
+		},
+
+		{
+			"jpalardy/vim-slime",
+			config = function()
+				vim.g.slime_target = "tmux"
+				vim.g.slime_default_config = {
+					socket_name = "default",
+					target_pane = "{last}",
+				}
+			end,
+		},
+
+		{
+			"ThePrimeagen/harpoon",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+		},
 	},
 
 	{ -- Autocompletion
@@ -203,6 +210,20 @@ local plugins = {
 	{ -- BCE
 		"karb94/neoscroll.nvim",
 		"lukas-reineke/indent-blankline.nvim",
+		"windwp/nvim-spectre",
+		"nyngwang/NeoZoom.lua",
+		"freddiehaddad/feline.nvim",
+		"AckslD/swenv.nvim",
+		"EdenEast/nightfox.nvim",
+		"catppuccin/nvim",
+
+		{
+			"akinsho/bufferline.nvim",
+			dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
+			config = function()
+				require("bufferline").setup()
+			end,
+		},
 		{
 			"gelguy/wilder.nvim",
 			build = ":UpdateRemotePlugins",

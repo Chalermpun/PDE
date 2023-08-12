@@ -27,7 +27,7 @@ local nvb_actions = transform_mod({
 		require("telescope.actions").close(prompt_bufnr)
 
 		-- Open the file with VisiData
-		local term = require("core.plugin_config.toggleterm.term")
+		local term = require("core.plugin_config.Terminal.term")
 		term.open_term("vd " .. full_path, { direction = "float" })
 	end,
 })
@@ -141,3 +141,4 @@ require("telescope").load_extension("projects") -- project.nvim
 require("telescope").load_extension("repo")
 require("telescope").load_extension("media_files")
 require("telescope").load_extension("yank_history")
+require("telescope").load_extension("harpoon")
