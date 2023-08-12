@@ -4,5 +4,3 @@ require("core.plugin_config.Fuzzy")
 require("core.plugin_config.Directory")
 require("core.plugin_config.BCE")
 require("core.plugin_config.treesitter")
-
-vim.cmd("colorscheme catppuccin-mocha")

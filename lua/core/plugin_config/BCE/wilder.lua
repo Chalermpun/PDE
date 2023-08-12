@@ -1,3 +1,5 @@
+local wilder = require("wilder")
+
 local gradient = {
 	"#f4468f",
 	"#fd4a85",
@@ -20,47 +22,18 @@ local gradient = {
 	"#aff05b",
 }
 
-local wilder = require("wilder")
-
 for i, fg in ipairs(gradient) do
 	gradient[i] = wilder.make_hl("WilderGradient" .. i, "Pmenu", { { a = 1 }, { a = 1 }, { foreground = fg } })
 end
 
 wilder.setup({ modes = { ":", "/", "?" } })
-wilder.set_option(
-	"renderer",
-	wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
-		highlights = {
-			gradient = gradient, -- must be set
-			-- selected_gradient key can be set to apply gradient highlighting for the selected candidate.
-		},
-		highlighter = wilder.highlighter_with_gradient({
-			wilder.basic_highlighter(), -- or wilder.lua_fzy_highlighter(),
-		}),
-		-- 'single', 'double', 'rounded' or 'solid'
-		-- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
-		border = "rounded",
-		max_height = "75%", -- max height of the palette
-		min_height = 0, -- set to the same as 'max_height' for a fixed height window
-		prompt_position = "top", -- 'top' or 'bottom' to set the location of the prompt
-		reverse = 0, -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
-		left = { " ", wilder.popupmenu_devicons() },
-		-- right = { " ", wilder.popupmenu_scrollbar() },
-	}))
-)
 
 wilder.set_option("pipeline", {
 	wilder.branch(
 		wilder.python_file_finder_pipeline({
-			file_command = function(ctx, arg)
-				if string.find(arg, ".") ~= nil then
-					return { "fdfind", "-tf", "-H" }
-				else
-					return { "fdfind", "-tf" }
-				end
-			end,
+			file_command = { "fd", "-tf" },
 			dir_command = { "fd", "-td" },
-			filters = { "cpsm_filter" },
+			filters = { "fuzzy_filter", "difflib_sorter" },
 		}),
 		wilder.substitute_pipeline({
 			pipeline = wilder.python_search_pipeline({
@@ -87,3 +60,50 @@ wilder.set_option("pipeline", {
 		})
 	),
 })
+
+local highlighters = {
+	wilder.pcre2_highlighter(),
+	wilder.highlighter_with_gradient({
+		wilder.basic_highlighter(),
+	}),
+}
+
+local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
+	border = "rounded",
+	empty_message = wilder.popupmenu_empty_message_with_spinner(),
+	highlighter = highlighters,
+	highlights = {
+		gradient = gradient, -- must be set
+	},
+	left = {
+		" ",
+		wilder.popupmenu_devicons(),
+		wilder.popupmenu_buffer_flags({
+			flags = " a + ",
+			icons = { ["+"] = "", a = "", h = "󰈤" },
+		}),
+	},
+	right = {
+		" ",
+		wilder.popupmenu_scrollbar(),
+	},
+}))
+
+local wildmenu_renderer = wilder.wildmenu_renderer({
+	highlighter = highlighters,
+	highlights = {
+		gradient = gradient, -- must be set
+	},
+	separator = " · ",
+	left = { " ", wilder.wildmenu_spinner(), " " },
+	right = { " ", wilder.wildmenu_index() },
+})
+
+wilder.set_option(
+	"renderer",
+	wilder.renderer_mux({
+		[":"] = popupmenu_renderer,
+		["/"] = wildmenu_renderer,
+		substitute = wildmenu_renderer,
+	})
+)

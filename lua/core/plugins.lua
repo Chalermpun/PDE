@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	"christoomey/vim-tmux-navigator",
 	"folke/which-key.nvim",
-	"catppuccin/nvim",
 
 	{ -- Directory Management
 		{
