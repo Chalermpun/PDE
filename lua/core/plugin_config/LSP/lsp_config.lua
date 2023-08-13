@@ -34,12 +34,12 @@ local servers = {
 	},
 	marksman = {},
 	zk = {},
-	lua_ls = {
-		-- Lua = {
-		-- 	workspace = { checkThirdParty = false },
-		-- 	telemetry = { enable = false },
-		-- },
-	},
+	-- lua_ls = {
+	-- Lua = {
+	-- 	workspace = { checkThirdParty = false },
+	-- 	telemetry = { enable = false },
+	-- },
+	-- },
 	tsserver = {
 		disable_formatting = false,
 	},
