@@ -188,7 +188,7 @@ local mappings_leader = {
 		S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
 		s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
 	},
-
+	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
 	r = {
 		s = { "<cmd>IronRepl<cr>", "IronRepl" },
