@@ -1,18 +1,19 @@
 M = {}
 
 local servers = {
-	pyright = {
-		settings = {
-			python = {
-				analysis = {
-					typeCheckingMode = "off",
-					autoSearchPaths = true,
-					useLibraryCodeForTypes = true,
-					diagnosticMode = "workspace",
-				},
-			},
-		},
-	},
+	-- pyright = {
+	-- 	settings = {
+	-- 		python = {
+	-- 			analysis = {
+	-- 				typeCheckingMode = "off",
+	-- 				autoSearchPaths = true,
+	-- 				useLibraryCodeForTypes = true,
+	-- 				diagnosticMode = "workspace",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+	jedi_language_server = {},
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {

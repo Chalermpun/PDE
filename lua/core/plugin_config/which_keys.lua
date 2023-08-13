@@ -11,6 +11,7 @@ vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
 vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
 vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
 vim.keymap.set("n", "<C-w>z", "<cmd>WindowsMaximize<cr>")
+vim.keymap.set("n", "s", "", { noremap = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true })
 
 vim.keymap.set("n", "<S-n>", "<Plug>(YankyCycleForward)")
