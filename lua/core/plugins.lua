@@ -17,6 +17,13 @@ local plugins = {
 
 	{ -- Coding
 		"abecodes/tabout.nvim",
+		"derektata/lorem.nvim",
+
+		{
+			"uga-rosa/ccc.nvim",
+			opts = {},
+			cmd = { "CccPick", "CccConvert", "CccHighlighterEnable", "CccHighlighterDisable", "CccHighlighterToggle" },
+		},
 		{
 			"phaazon/hop.nvim",
 			dependencies = {
@@ -275,6 +282,7 @@ local plugins = {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		"nvim-treesitter/playground",
 		{
 			"RRethy/nvim-treesitter-endwise",
 			event = "InsertEnter",
@@ -292,6 +300,7 @@ local plugins = {
 		"lukas-reineke/indent-blankline.nvim",
 		"nyngwang/NeoZoom.lua",
 		"AckslD/swenv.nvim",
+		"vim-scripts/Tabmerge",
 
 		{
 			"windwp/nvim-spectre",
@@ -343,13 +352,37 @@ local plugins = {
 		},
 	},
 
-	-- Interface
-	{
+	{ -- Document Generator
+		"kkoomen/vim-doge",
+		build = function()
+			vim.cmd([[call doge#install()]])
+		end,
+		dependencies = {
+			"danymat/neogen",
+		},
+	},
 
+	{ -- Interface
 		"EdenEast/nightfox.nvim",
 		"catppuccin/nvim",
 		"freddiehaddad/feline.nvim",
+		"dstein64/vim-startuptime",
+		"eandrju/cellular-automaton.nvim",
+		"tamton-aquib/zone.nvim",
 
+		{ "itchyny/calendar.vim", cmd = { "Calendar" } },
+		{ "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
+		{
+			"folke/zen-mode.nvim",
+			opts = { plugins = { tmux = { enabled = true } } },
+			cmd = { "ZenMode" },
+		},
+		{
+			"norcalli/nvim-colorizer.lua",
+			config = function()
+				require("colorizer").setup()
+			end,
+		},
 		{
 			"goolord/alpha-nvim",
 			event = "VimEnter",
@@ -364,6 +397,81 @@ local plugins = {
 				lazy = false,
 				priority = 1000,
 				opts = {},
+			},
+		},
+	},
+
+	{ -- DAP
+		{
+
+			"ThePrimeagen/refactoring.nvim",
+			config = function()
+				require("refactoring").setup()
+			end,
+		},
+
+		{
+			"mfussenegger/nvim-dap",
+			event = "BufReadPre",
+			module = { "dap" },
+			dependencies = {
+				"theHamsta/nvim-dap-virtual-text",
+				"rcarriga/nvim-dap-ui",
+				"mfussenegger/nvim-dap-python",
+				"nvim-telescope/telescope-dap.nvim",
+				{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+				"nvim-telescope/telescope-media-files.nvim",
+			},
+			config = function()
+				require("core.plugin_config.Dap.dap").setup()
+			end,
+		},
+		{
+			"nvim-neotest/neotest",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+				"nvim-neotest/neotest-python",
+			},
+		},
+
+		{
+			"stevearc/overseer.nvim",
+			opts = {},
+		},
+	},
+
+	{ --- Database
+		"tpope/vim-dadbod",
+		dependencies = {
+			"kristijanhusak/vim-dadbod-ui",
+			"kristijanhusak/vim-dadbod-completion",
+		},
+		config = function()
+			require("core.plugin_config.dadbod").setup()
+		end,
+		cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+	},
+
+	{ -- API
+		"NTBBloodbath/rest.nvim",
+		config = function()
+			require("rest-nvim").setup()
+		end,
+	},
+
+	{ -- AI
+		{
+			"Exafunction/codeium.vim",
+			event = "InsertEnter",
+		},
+		{
+			"jackMort/ChatGPT.nvim",
+			dependencies = {
+				"MunifTanjim/nui.nvim",
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim",
 			},
 		},
 	},

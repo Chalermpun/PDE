@@ -3,6 +3,7 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.codeium_disable_bindings = 1
 
 vim.opt.splitright = true
 vim.opt.backspace = "2"
