@@ -10,6 +10,7 @@ vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle
 vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
 vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
 vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
+vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true })
 
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
@@ -71,9 +72,30 @@ local mappings_leader = {
 		a = { "<cmd>lua require('telescope').extensions.aerial.aerial()<CR>", "Telescope Aerial" },
 		o = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "Telescope Oldfiles" },
 		g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Telescope Live Grep" },
-		f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Telescope Find Files" },
+		f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>", "Telescope Find Files" },
 		b = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", "Telescope File Browser" },
 		m = { vim.lsp.buf.format, "LSP formatting" },
+	},
+
+	g = {
+		Y = { "<cmd>lua require('gitlinker').get_repo_url()<cr>", "Gitlinker Get Repo URL" },
+		y = {
+			"<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').copy_to_clipboard, print_url = true})<cr>",
+			"Gitlinker Copy URL with Rank",
+			mode = "v",
+		},
+
+		B = {
+			"<cmd>lua require('gitlinker').get_repo_url({action_callback = require('gitlinker').actions.open_in_browser})<cr>",
+			"Gitlinker Open Repo URL with Browser (Main URL)",
+		},
+		b = {
+			"<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').open_in_browser})<cr>",
+			"Git Open Repo with File",
+			mode = "v",
+		},
+		d = { "<cmd>DiffviewOpen<cr>", "DiffviewOpen" },
+		D = { "<cmd>DiffviewClose<cr>", "DiffviewClose" },
 	},
 
 	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },

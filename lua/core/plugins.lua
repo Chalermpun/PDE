@@ -81,6 +81,28 @@ local plugins = {
 		},
 	},
 
+	-- Git related plugins
+	{
+		"tpope/vim-fugitive",
+		"tpope/vim-rhubarb",
+		"lewis6991/gitsigns.nvim",
+		"f-person/git-blame.nvim",
+		"ruifm/gitlinker.nvim",
+		"wintermute-cell/gitignore.nvim",
+		{
+			"sindrets/diffview.nvim",
+			config = function()
+				require("diffview").setup({
+					win_config = { -- See ':h diffview-config-win_config'
+						position = "left",
+						width = 40,
+						win_opts = {},
+					},
+				})
+			end,
+		},
+	},
+
 	{ -- Terminal Plugin
 		"hkupty/iron.nvim",
 
@@ -329,7 +351,6 @@ local plugins = {
 				"anuvyklack/animation.nvim",
 			},
 		},
-
 		{
 			"gen740/SmoothCursor.nvim",
 			config = function()
