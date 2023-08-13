@@ -249,6 +249,7 @@ local mappings_leader = {
 		p = { "<cmd>CccPick<cr>", "Color Picker" },
 		c = { "<cmd>CccConvert<cr>", "Color Convert" },
 		h = { "<cmd>CccHighlighterToggle<cr>", "Color Toggle Highlighter" },
+		t = { "<cmd>Telekasten panel<cr>", "Telekasten" },
 	},
 }
 

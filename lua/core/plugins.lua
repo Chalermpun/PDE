@@ -475,6 +475,40 @@ local plugins = {
 			},
 		},
 	},
+
+	{ -- Markdown
+		{ "dhruvasagar/vim-table-mode", ft = { "markdown", "org", "norg" } },
+		{
+			"iamcco/markdown-preview.nvim",
+			build = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+			ft = "markdown",
+			cmd = { "MarkdownPreview" },
+			dependencies = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
+		},
+
+		{
+			"lukas-reineke/headlines.nvim",
+			opts = {},
+			ft = { "markdown", "org", "norg" },
+		},
+
+		{
+			"renerocksai/telekasten.nvim",
+			dependencies = { "nvim-telescope/telescope.nvim" },
+			opts = {
+				home = vim.env.HOME .. "/zettelkasten",
+			},
+			ft = { "markdown" },
+			config = function()
+				require("telekasten").setup({
+					home = vim.fn.expand("~/zettelkasten"),
+				})
+			end,
+		},
+		-- { "AckslD/nvim-FeMaco.lua", ft = { "markdown" }, opts = {} },
+	},
 }
 
 local opts = {}
