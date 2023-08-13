@@ -261,9 +261,24 @@ local plugins = {
 				local nls = require("null-ls")
 				nls.setup({
 					sources = {
+						nls.builtins.diagnostics.ruff,
+						nls.builtins.diagnostics.write_good,
+						nls.builtins.diagnostics.tsc,
+						nls.builtins.diagnostics.shellcheck,
+						nls.builtins.diagnostics.hadolint,
+						nls.builtins.formatting.black,
+						nls.builtins.formatting.isort,
 						nls.builtins.formatting.stylua,
-						nls.builtins.diagnostics.ruff.with({ extra_args = { "--max-line-length=180" } }),
+						nls.builtins.formatting.fixjson,
+						nls.builtins.formatting.prettierd,
+						nls.builtins.formatting.shfmt,
+						nls.builtins.code_actions.gitsigns,
+						nls.builtins.code_actions.gitrebase,
+						-- hover
+						nls.builtins.hover.dictionary,
 					},
+					debounce = 150,
+					save_after_format = false,
 				})
 			end,
 		},
