@@ -101,7 +101,8 @@ vim.keymap.set("n", "vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { noremap = true, silent = true, desc = "Hop Insert Above without Enter" })
+
 vim.keymap.set("n", "<Leader>vO", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -109,7 +110,7 @@ vim.keymap.set("n", "<Leader>vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { noremap = true, silent = true, desc = "Hop Insert Above with Enter" })
 
 --  NOTE: Hop with Macros
 
@@ -118,7 +119,7 @@ vim.keymap.set("n", "vC", function()
 	vim.schedule(function()
 		vim.cmd([[:normal @f]])
 	end)
-end, opts)
+end, { noremap = true, silent = true, desc = "Hop record Function with f" })
 
 --  NOTE: TSHT (Treesitter hint textobject) --> mfussenegger/nvim-treehopper
 
@@ -128,11 +129,10 @@ vim.keymap.set("n", "vc", function()
 		vim.cmd([[normal! c]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { noremap = true, silent = true, desc = "Hop Change according to treeobject" })
 
 -- place this in one of your configuration file(s)
 local hop = require("hop")
-local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "f", function()
 	hop.hint_char1({ current_line_only = true })
 end, { remap = true })

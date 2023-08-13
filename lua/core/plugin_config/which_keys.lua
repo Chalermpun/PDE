@@ -12,6 +12,8 @@ vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
 vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
 vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true })
 
+vim.keymap.set("n", "<S-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<S-p>", "<Plug>(YankyCycleBackward)")
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
 

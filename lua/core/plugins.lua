@@ -291,10 +291,7 @@ local plugins = {
 		"karb94/neoscroll.nvim",
 		"lukas-reineke/indent-blankline.nvim",
 		"nyngwang/NeoZoom.lua",
-		"freddiehaddad/feline.nvim",
 		"AckslD/swenv.nvim",
-		"EdenEast/nightfox.nvim",
-		"catppuccin/nvim",
 
 		{
 			"windwp/nvim-spectre",
@@ -328,23 +325,6 @@ local plugins = {
 		},
 
 		{
-			"petertriho/nvim-scrollbar",
-			dependencies = {
-				"kevinhwang91/nvim-hlslens",
-				"folke/tokyonight.nvim",
-				lazy = false,
-				priority = 1000,
-				opts = {},
-			},
-		},
-
-		{
-			"goolord/alpha-nvim",
-			event = "VimEnter",
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-		},
-
-		{
 			"anuvyklack/windows.nvim",
 			dependencies = {
 				"anuvyklack/middleclass",
@@ -360,6 +340,31 @@ local plugins = {
 		{
 			"kevinhwang91/nvim-ufo",
 			dependencies = { "kevinhwang91/promise-async" },
+		},
+	},
+
+	-- Interface
+	{
+
+		"EdenEast/nightfox.nvim",
+		"catppuccin/nvim",
+		"freddiehaddad/feline.nvim",
+
+		{
+			"goolord/alpha-nvim",
+			event = "VimEnter",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+		},
+
+		{
+			"petertriho/nvim-scrollbar",
+			dependencies = {
+				"kevinhwang91/nvim-hlslens",
+				"folke/tokyonight.nvim",
+				lazy = false,
+				priority = 1000,
+				opts = {},
+			},
 		},
 	},
 }
