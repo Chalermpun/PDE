@@ -1,7 +1,8 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
+local fortune = require("core.plugin_config.Interface.alpha.fortune")
 local function header()
-	return require("core.plugin_config.BCE.alpha.logos")["random"]
+	return require("core.plugin_config.Interface.alpha.logo")["random"]
 end
 
 alpha.setup(dashboard.opts)
@@ -30,8 +31,8 @@ vim.api.nvim_create_autocmd("User", {
 		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
 		-- local now = os.date "%d-%m-%Y %H:%M:%S"
-		local version = "  v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-		local fortune = require("core.plugin_config.BCE.alpha.fortune")
+		local version = " v" .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
+		local fortune = require("core.plugin_config.Interface.alpha.fortune")
 		local quote = table.concat(fortune(), "\n")
 		local plugins = "󱐌 Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
 		local footer = "\t" .. version .. "\t" .. plugins .. "\n" .. quote

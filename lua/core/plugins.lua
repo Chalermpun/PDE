@@ -15,8 +15,57 @@ local plugins = {
 	"christoomey/vim-tmux-navigator",
 	"folke/which-key.nvim",
 
-	{ -- Directory Management
+	{ -- Coding
+		"abecodes/tabout.nvim",
+		{
+			"phaazon/hop.nvim",
+			dependencies = {
+				"ziontee113/syntax-tree-surfer",
+				"mfussenegger/nvim-treehopper",
+			},
+			config = function()
+				-- you can configure Hop the way you like here; see :h hop-config
+				require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+			end,
+		},
 
+		{
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		},
+
+		{
+			"kylechui/nvim-surround",
+			version = "*", -- Use for stability; omit to use `main` branch for the latest features
+			event = "VeryLazy",
+			config = function()
+				require("nvim-surround").setup()
+			end,
+		},
+
+		{
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup({})
+			end,
+		},
+
+		{
+			"windwp/nvim-ts-autotag",
+			config = function()
+				require("nvim-ts-autotag").setup({})
+			end,
+		},
+
+		{
+			"Wansmer/treesj",
+			dependencies = { "nvim-treesitter" },
+		},
+	},
+
+	{ -- Directory Management
 		{
 			"stevearc/oil.nvim",
 			opts = {},
@@ -35,6 +84,10 @@ local plugins = {
 	{ -- Terminal Plugin
 		"hkupty/iron.nvim",
 
+		{
+			"kiyoon/jupynium.nvim",
+			build = "pip3 install --user .",
+		},
 		{
 			"akinsho/toggleterm.nvim",
 			keys = { [[<C-\>]] },
@@ -85,6 +138,7 @@ local plugins = {
 		"stevearc/aerial.nvim",
 		"gbprod/yanky.nvim",
 		"kevinhwang91/nvim-bqf",
+		"chrisbra/unicode.vim",
 		{
 			"folke/trouble.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -200,6 +254,10 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		{
+			"RRethy/nvim-treesitter-endwise",
+			event = "InsertEnter",
+		},
+		{
 			"m-demare/hlargs.nvim",
 			config = function()
 				require("hlargs").setup()
@@ -210,13 +268,18 @@ local plugins = {
 	{ -- BCE
 		"karb94/neoscroll.nvim",
 		"lukas-reineke/indent-blankline.nvim",
-		"windwp/nvim-spectre",
 		"nyngwang/NeoZoom.lua",
 		"freddiehaddad/feline.nvim",
 		"AckslD/swenv.nvim",
 		"EdenEast/nightfox.nvim",
 		"catppuccin/nvim",
 
+		{
+			"windwp/nvim-spectre",
+			config = function()
+				require("spectre").setup()
+			end,
+		},
 		{
 			"akinsho/bufferline.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },

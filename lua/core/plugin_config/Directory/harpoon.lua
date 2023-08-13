@@ -22,14 +22,6 @@ harpoon.setup({
 	},
 })
 
-keymap.set("n", "<leader>H", harpoon_mark.add_file, { noremap = true, silent = true, desc = "Harpoon Add File" })
-keymap.set(
-	"n",
-	"<leader><C-e>",
-	harpoon_ui.toggle_quick_menu,
-	{ noremap = true, silent = true, desc = "Harpoon Toggle Menu" }
-)
-
 keymap.set("n", "<leader>1", function()
 	harpoon_ui.nav_file(1)
 end, { desc = "Harpoon Nav_File 1" })

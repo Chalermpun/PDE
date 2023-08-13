@@ -34,12 +34,5 @@ require("yanky").setup({
 	},
 })
 
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-vim.keymap.set("n", "<A-n>", "<Plug>(YankyCycleForward)")
-vim.keymap.set("n", "<A-p>", "<Plug>(YankyCycleBackward)")
-
 vim.cmd([[hi YankyYanked guifg=#000000 guibg=#ffffff]])
 vim.cmd([[hi YankyPut guifg=#000000 guibg=#ffffff]])

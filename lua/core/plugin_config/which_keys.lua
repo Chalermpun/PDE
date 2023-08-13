@@ -1,70 +1,23 @@
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
-vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
-vim.keymap.set("n", "<leader>at", "<cmd>lua require('hlargs').toggle()<cr>", { desc = "Highlight Args" })
-vim.keymap.set(
-	"n",
-	"<leader><leader>",
-	":lua require('telescope').extensions.frecency.frecency()<CR>",
-	{ desc = "Telescope Frecency" }
-)
+vim.keymap.set("n", "bd", "<cmd>:Bdelete<cr>")
 vim.keymap.set("n", "gR", function()
 	require("trouble").open("lsp_references")
 end, { desc = "Trouble LSP References" })
-vim.keymap.set("n", "<leader>tw", function()
-	require("trouble").open("workspace_diagnostics")
-end, { desc = "Trouble Workspace Diagnostic" })
-vim.keymap.set("n", "<leader>td", function()
-	require("trouble").open("document_diagnostics")
-end, { desc = "Trouble Document Diagnostic" })
-vim.keymap.set("n", "<leader>tq", function()
-	require("trouble").open("quickfix")
-end, { desc = "Trouble Quickfix" })
 
-vim.keymap.set("n", "<leader>zz", function()
-	vim.cmd("NeoZoomToggle")
-end, { silent = true, nowait = true, desc = "NeoZoom" })
+vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
+vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
+vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
+vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
 
--- Bufferline keymap
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><Tab>",
-	":BufferLineMoveNext<CR>",
-	{ noremap = true, desc = "BufferLineMoveNext" }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><S-Tab>",
-	":BufferLineMovePrev<CR>",
-	{ noremap = true, desc = "BufferLineCyclePrev" }
-)
 
-vim.keymap.set("n", "bd", "<cmd>:Bdelete<cr>", { desc = "Bdelete" })
+vim.keymap.set("n", "<A-n>n", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<A-p>p", "<Plug>(YankyCycleBackward)")
 
-require("spectre").setup()
-vim.keymap.set("n", "<leader>ss", '<cmd>lua require("spectre").toggle()<CR>', {
-	desc = "Toggle Spectre",
-})
-
-vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-	desc = "Search current word",
-})
-vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-	desc = "Search current word",
-})
-vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-	desc = "Search on current file",
-})
-
-vim.keymap.set("n", "<Leader>vs", ":lua require('swenv.api').pick_venv()<CR>", { desc = "Switch Python Environment" })
-
--- iron also has a list of commands, see :h iron-commands for all available commands
-vim.keymap.set("n", "<space>rs", "<cmd>IronRepl<cr>", { desc = "IronRepl" })
-vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>", { desc = "IronRestart" })
-vim.keymap.set("n", "<space>rf", "<cmd>IronFocus<cr>", { desc = "IronFocus" })
-vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>", { desc = "IronHide" })
-
+----------------- WhichKey ------------------------------
 local whichkey = require("which-key")
 local conf = {
 	window = {
@@ -86,13 +39,18 @@ local leaders = {
 	nowait = false, -- use `nowait` when creating keymaps
 }
 
--- You probably also want to set a keymap to toggle aerial
-vim.keymap.set("n", "<leader>ar", "<cmd>AerialToggle!<CR>")
 local mappings_leader = {
+	["<c-e>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon Menu" },
+	["<Tab>"] = { "<cmd>BufferLineMoveNext<cr>", "BufferLineMoveNext" },
+	["<S-Tab>"] = { "<cmd>BufferLineMovePrev<cr>", "BufferLineMovePrev" },
+	["<leader>"] = { "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", "Telescope Frecency" },
+
 	a = {
 		a = { "<cmd>WhichKey<cr>", "WhichKey" },
 		r = { "<cmd>AerialToggle<cr>", "AerialToggle" },
+		t = { "<cmd>lua require('hlargs').toggle()<cr>", "Highlight Args" },
 	},
+
 	b = {
 		t = { "<cmd>Barbecue toggle<cr>", "Barbecue Toggle" },
 		u = { "<cmd>lua require('barbecue.ui').update()<cr>", "Barbecue Update" },
@@ -118,22 +76,47 @@ local mappings_leader = {
 		m = { vim.lsp.buf.format, "LSP formatting" },
 	},
 
+	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },
+	H = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add File" },
+
+	i = {
+		ih = { "<cmd>IlluminatePause<cr>", "IlluminatePause" },
+		is = { "<cmd>IlluminateResume<cr>", "IlluminateResume" },
+	},
+
 	m = {
 		name = "Minimap",
 		o = { "<cmd>lua require('mini.map').open()<cr>", "Minimap Open" },
 		c = { "<cmd>lua require('mini.map').close()<cr>", "Minimap Close" },
 		f = { "<cmd>lua require('mini.map').toggle_focus()<cr>", "Minimap Focus" },
 	},
-
-	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },
-	i = {
-		ih = { "<cmd>IlluminatePause<cr>", "IlluminatePause" },
-		is = { "<cmd>IlluminateResume<cr>", "IlluminateResume" },
-	},
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
+	r = {
+		s = { "<cmd>IronRepl<cr>", "IronRepl" },
+		r = { "<cmd>IronRestart<cr>", "IronRestart" },
+		f = { "<cmd>IronFocus<cr>", "IronFocus" },
+		h = { "<cmd>IronHide<cr>", "IronHide" },
+	},
+
+	S = { "<cmd>lua require('spectre').toggle()<cr>", "Spectre Toggle" },
+	s = {
+		w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Search current word (N)", mode = "n" },
+		v = { "<cmd>lua require('spectre').open_visual()<cr>", "Search current word (V)", mode = "v" },
+		p = {
+			"<cmd>lua require('spectre').open_file_search({select_word=true})<cr>",
+			"Search on current file (V)",
+			mode = "v",
+		},
+	},
+
 	t = {
 		t = { "<cmd>TroubleToggle<cr>", "Trouble Toggle" },
+		w = { "<cmd>lua require('trouble').open('workspace_diagnostics')<cr>", "Trouble Workspace Diagnostic" },
+		d = { "<cmd>lua require('trouble').open('document_diagnostics')<cr>", "Trouble Document Diagnostic" },
+		q = { "<cmd>lua require('trouble').open('quickfix')<cr>", "Trouble Quickfix" },
 	},
+	v = { s = { "<cmd> lua require('swenv.api).pick_venv()<cr>", "Switch Python Environment" } },
+
 	w = { "<cmd>wa<cr>", "Save All" },
 	x = {
 		name = "External",
@@ -150,6 +133,7 @@ local mappings_leader = {
 		},
 		d = { "<cmd>lua require('core.plugin_config.Terminal.term').docker_client_toggle()<CR>", "Docker" },
 	},
+	z = { z = { "<cmd>NeoZoomToggle<cr>", "NeoZoom" } },
 }
 
 whichkey.setup(conf)
