@@ -534,16 +534,17 @@ local plugins = {
 			"mzlogin/vim-markdown-toc",
 			ft = { "markdown" },
 		},
-	},
-	{
-		"nvim-neorg/neorg",
-		ft = "norg",
-	},
-	{
-		"jakewvincent/mkdnflow.nvim",
-		ft = { "markdown" },
-		rocks = "luautf8",
-		opts = {},
+
+		{
+			"nvim-neorg/neorg",
+			ft = "norg",
+		},
+		{
+			"jakewvincent/mkdnflow.nvim",
+			ft = { "markdown" },
+			rocks = "luautf8",
+			opts = {},
+		},
 	},
 }
 
