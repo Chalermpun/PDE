@@ -6,6 +6,13 @@ vim.keymap.set("n", "gR", function()
 	require("trouble").open("lsp_references")
 end, { desc = "Trouble LSP References" })
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "oil://*" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>lua require('oil').close()<cr>", { buffer = 0 })
+	end,
+})
+
 vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
 vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
 vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
