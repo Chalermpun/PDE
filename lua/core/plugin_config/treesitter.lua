@@ -7,10 +7,16 @@ local swap_next, swap_prev = (function()
 		c = "@class.outer",
 	}
 
+	-- local n, p = {}, {}
+	-- for key, obj in pairs(swap_objects) do
+	-- 	n[string.format("<A-n><A-%s>", key)] = obj
+	-- 	p[string.format("<A-p><A-%s>", key)] = obj
+	-- end
+
 	local n, p = {}, {}
 	for key, obj in pairs(swap_objects) do
-		n[string.format("<A-n><A-%s>", key)] = obj
-		p[string.format("<A-p><A-%s>", key)] = obj
+		n[string.format("<A-n>%s", key)] = obj
+		p[string.format("<A-p>%s", key)] = obj
 	end
 
 	return n, p
@@ -55,18 +61,22 @@ require("nvim-treesitter.configs").setup({
 			goto_next_start = {
 				["]m"] = "@function.outer",
 				["]]"] = "@class.outer",
+				["]a"] = "@parameter.outer",
 			},
 			goto_next_end = {
 				["]M"] = "@function.outer",
 				["]["] = "@class.outer",
+				["]A"] = "@parameter.outer",
 			},
 			goto_previous_start = {
 				["[m"] = "@function.outer",
 				["[["] = "@class.outer",
+				["[a"] = "@parameter.outer",
 			},
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
+				["[A"] = "@parameter.outer",
 			},
 		},
 		swap = {
