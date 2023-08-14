@@ -2,7 +2,7 @@
 -- See `:help nvim-treesitter`
 local swap_next, swap_prev = (function()
 	local swap_objects = {
-		p = "@parameter.inner",
+		a = "@parameter.inner",
 		f = "@function.outer",
 		c = "@class.outer",
 	}
