@@ -16,7 +16,7 @@ local function showFugitiveGit()
     topleft vertical Git
     " wincmd H  " Open Git window in vertical split
     " setlocal winfixwidth
-    " vertical resize 31
+    vertical resize 55
     " setlocal winfixwidth
     setlocal nonumber
     setlocal norelativenumber
@@ -31,4 +31,5 @@ local function toggleFugitiveGit()
 		showFugitiveGit()
 	end
 end
-vim.keymap.set("n", "<leader>gt", toggleFugitiveGit, { desc = "Git Toggle" })
+
+vim.api.nvim_create_user_command("GitToggle", toggleFugitiveGit, {})

@@ -157,7 +157,7 @@ local mappings_leader = {
 		},
 		d = { "<cmd>DiffviewOpen<cr>", "DiffviewOpen" },
 		D = { "<cmd>DiffviewClose<cr>", "DiffviewClose" },
-		-- s = { "<cmd>topleft vertical Git<cr>", "Git Status" },
+		t = { "<cmd>GitToggle<cr>", "Git Status" },
 	},
 
 	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },
