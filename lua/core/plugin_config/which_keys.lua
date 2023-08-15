@@ -245,7 +245,7 @@ local mappings_leader = {
 		tt = { "<cmd>OverseerToggle<cr>", "Toggle" },
 	},
 
-	v = { s = { "<cmd> lua require('swenv.api).pick_venv()<cr>", "Switch Python Environment" } },
+	v = { s = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Switch Python Environment" } },
 
 	w = { "<cmd>wa<cr>", "Save All" },
 	x = {
