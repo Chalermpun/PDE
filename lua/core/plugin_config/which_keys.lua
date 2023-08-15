@@ -152,7 +152,6 @@ local mappings_leader = {
 		g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Telescope Live Grep" },
 		f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>", "Telescope Find Files" },
 		b = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", "Telescope File Browser" },
-		m = { vim.lsp.buf.format, "LSP formatting" },
 	},
 
 	g = {
