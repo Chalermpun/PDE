@@ -294,7 +294,9 @@ local plugins = {
 				"SmiteshP/nvim-navic",
 				"nvim-tree/nvim-web-devicons",
 			},
-			config = true,
+			config = function()
+				require("barbecue")
+			end,
 		},
 	},
 
