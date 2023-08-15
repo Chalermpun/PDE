@@ -16,7 +16,7 @@ local function showFugitiveGit()
     topleft vertical Git
     " wincmd H  " Open Git window in vertical split
     " setlocal winfixwidth
-    vertical resize 55
+    " vertical resize 75
     " setlocal winfixwidth
     setlocal nonumber
     setlocal norelativenumber
