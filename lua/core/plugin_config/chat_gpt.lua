@@ -13,10 +13,10 @@ end
 local filename = vim.fn.expand("~/.chat")
 local file_contents = read_file(filename)
 vim.env.OPENAI_API_KEY = file_contents
-vim.env.OPENAI_API_HOST = "api.openai.com"
 
 require("chatgpt").setup({
 	api_key = nil,
+	api_host_cmd = "echo -n 'api.openai.com'",
 	yank_register = "+",
 	edit_with_instructions = {
 		diff = false,
