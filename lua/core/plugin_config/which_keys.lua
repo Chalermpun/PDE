@@ -175,6 +175,7 @@ local mappings_leader = {
 		d = { "<cmd>DiffviewOpen<cr>", "DiffviewOpen" },
 		D = { "<cmd>DiffviewClose<cr>", "DiffviewClose" },
 		t = { "<cmd>GitToggle<cr>", "Git Status" },
+		l = { "<cmd>GitBlameToggle<cr>", "Git Blame" },
 	},
 
 	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },
