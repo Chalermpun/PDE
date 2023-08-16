@@ -21,8 +21,6 @@ vim.keymap.set("n", "<C-w>z", "<cmd>WindowsMaximize<cr>")
 vim.keymap.set("n", "s", "", { noremap = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true })
 
-vim.keymap.set("n", "<S-n>", "<Plug>(YankyCycleForward)")
-vim.keymap.set("n", "<S-p>", "<Plug>(YankyCycleBackward)")
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
 
@@ -41,6 +39,8 @@ end, { expr = true, desc = "Codedium Clear" })
 vim.keymap.set("i", "<A-s>", function()
 	return vim.fn["codeium#Complete"]()
 end, { expr = true, desc = "Codedum Complete" })
+vim.keymap.set("n", "<A-h>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<A-l>", "<Plug>(YankyCycleBackward)")
 
 ----------------- WhichKey ------------------------------
 local whichkey = require("which-key")
