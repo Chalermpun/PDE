@@ -39,8 +39,8 @@ end, { expr = true, desc = "Codedium Clear" })
 vim.keymap.set("i", "<A-s>", function()
 	return vim.fn["codeium#Complete"]()
 end, { expr = true, desc = "Codedum Complete" })
-vim.keymap.set("n", "<A-h>", "<Plug>(YankyCycleForward)")
-vim.keymap.set("n", "<A-l>", "<Plug>(YankyCycleBackward)")
+vim.keymap.set("n", "<c-)>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-(>", "<Plug>(YankyCycleBackward)")
 
 ----------------- WhichKey ------------------------------
 local whichkey = require("which-key")
