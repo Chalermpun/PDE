@@ -295,7 +295,7 @@ local plugins = {
 				"nvim-tree/nvim-web-devicons",
 			},
 			config = function()
-				require("barbecue")
+				require("barbecue").setup()
 			end,
 		},
 	},
