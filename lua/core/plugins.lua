@@ -112,7 +112,6 @@ local plugins = {
 	},
 
 	{ -- Terminal Plugin
-		"hkupty/iron.nvim",
 
 		{
 			"kiyoon/jupynium.nvim",

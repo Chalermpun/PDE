@@ -209,12 +209,6 @@ local mappings_leader = {
 	},
 	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
-	r = {
-		s = { "<cmd>IronRepl<cr>", "IronRepl" },
-		r = { "<cmd>IronRestart<cr>", "IronRestart" },
-		f = { "<cmd>IronFocus<cr>", "IronFocus" },
-		h = { "<cmd>IronHide<cr>", "IronHide" },
-	},
 
 	S = { "<cmd>lua require('spectre').toggle()<cr>", "Spectre Toggle" },
 	s = {
