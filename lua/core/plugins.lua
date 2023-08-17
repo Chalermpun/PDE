@@ -232,6 +232,7 @@ local plugins = {
 				"b0o/schemastore.nvim",
 				"nvim-lua/plenary.nvim",
 				"RRethy/vim-illuminate",
+				"folke/lsp-colors.nvim",
 			},
 			config = function(plugin)
 				require("core.plugin_config.LSP.lsp_config").setup(plugin)
@@ -547,7 +548,6 @@ local plugins = {
 		{
 			"jakewvincent/mkdnflow.nvim",
 			ft = { "markdown" },
-			rocks = "luautf8",
 			opts = {},
 		},
 	},

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig
+sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig sqlite3 libsqlite3-dev ripgrep libboost-all-dev libicu-dev fd-find npm
 current_directory=$(pwd)
 
 
@@ -68,5 +68,13 @@ done
 find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 fc-cache -fv
+
+pip install notebook nbclassic jupyter-console jupynium visidata pynvim
+cargo install viu
+cargo install tokei
+cargo install bottom --locked
+cargo install navi
+cargo install so
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 # don't forget setting system-site-package for jedi-language-server-protocal (lsp-config)
