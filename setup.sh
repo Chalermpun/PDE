@@ -1,9 +1,8 @@
 #!/bin/bash
 
-sudo apt-get update
-sudo apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig sqlite3 libsqlite3-dev ripgrep libboost-all-dev libicu-dev fd-find npm
+apt-get update
+apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig sqlite3 libsqlite3-dev ripgrep libboost-all-dev libicu-dev fd-find npm pkg-config
 current_directory=$(pwd)
-
 
 # Set Zsh as the default shell
 chsh -s $(which zsh)
@@ -75,6 +74,6 @@ cargo install tokei
 cargo install bottom --locked
 cargo install navi
 cargo install so
+cargo install fd-find
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-
 # don't forget setting system-site-package for jedi-language-server-protocal (lsp-config)
