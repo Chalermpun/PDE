@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update
-apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig sqlite3 libsqlite3-dev ripgrep libboost-all-dev libicu-dev fd-find npm pkg-config
+apt-get install -y git zsh ninja-build gettext cmake unzip curl tmux ripgrep python3 python3-pip python3-venv fontconfig sqlite3 libsqlite3-dev ripgrep libboost-all-dev libicu-dev npm pkg-config
 current_directory=$(pwd)
 
 # Set Zsh as the default shell
