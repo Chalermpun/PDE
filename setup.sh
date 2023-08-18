@@ -76,4 +76,6 @@ cargo install navi
 cargo install so
 cargo install fd-find
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+rm -rf Dockerfile README.md init.lua lazy-lock.json lua neovim setup.sh
+
 # don't forget setting system-site-package for jedi-language-server-protocal (lsp-config)
