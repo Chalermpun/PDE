@@ -142,10 +142,9 @@ local mappings_leader = {
 	e = { vim.diagnostic.open_float, "Open Float Diagnostic" },
 	f = {
 		name = "Telescope",
-		s = {
-			"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-			"Telescope Live Grep Args",
-		},
+		s = { "<cmd>Telescope symbols<CR>", "Telescope symbols" },
+		p = { "<cmd>Telescope projects<CR>", "Telescope projects" },
+		r = { "<cmd>Telescope repo<CR>", "Telescope repo" },
 		y = { "<cmd>lua require('telescope').extensions.yank_history.yank_history()<CR>", "Telescope Yank History" },
 		a = { "<cmd>lua require('telescope').extensions.aerial.aerial()<CR>", "Telescope Aerial" },
 		o = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "Telescope Oldfiles" },
