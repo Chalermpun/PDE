@@ -17,3 +17,4 @@ RUN /bin/bash /root/setup.sh
 
 # Clean up unnecessary files (if needed)
 RUN rm -rf /root/Dockerfile /root/README.md /root/init.lua /root/lazy-lock.json /root/lua /root/neovim /root/setup.sh
+RUN zsh
