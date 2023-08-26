@@ -386,6 +386,19 @@ local plugins = {
 	{ -- Interface
 		"EdenEast/nightfox.nvim",
 		"catppuccin/nvim",
+		"marko-cerovac/material.nvim",
+		{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+		{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+		"sainnhe/gruvbox-material",
+		"dracula/vim",
+		"yashguptaz/calvera-dark.nvim",
+		"projekt0n/github-nvim-theme",
+		{ "rose-pine/neovim", name = "rose-pine" },
+		{
+			"olimorris/onedarkpro.nvim",
+			priority = 1000, -- Ensure it loads first
+		},
+		"rebelot/kanagawa.nvim",
 		"freddiehaddad/feline.nvim",
 		"dstein64/vim-startuptime",
 		"eandrju/cellular-automaton.nvim",
