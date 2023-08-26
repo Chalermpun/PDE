@@ -20,7 +20,7 @@ require("chatgpt").setup({
 	edit_with_instructions = {
 		diff = false,
 		keymaps = {
-			close = "<C-c>",
+			close = "<C-c>q",
 			accept = "<C-y>",
 			toggle_diff = "<C-d>",
 			toggle_settings = "<C-o>",
@@ -46,7 +46,7 @@ require("chatgpt").setup({
 			},
 		},
 		keymaps = {
-			close = "<C-c>",
+			close = "<C-c>q",
 			yank_last = "<C-y>",
 			yank_last_code = "<C-k>",
 			scroll_up = "<C-u>",

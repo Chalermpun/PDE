@@ -21,8 +21,42 @@ vim.keymap.set("n", "<C-w>z", "<cmd>WindowsMaximize<cr>")
 vim.keymap.set("n", "s", "", { noremap = true, nowait = true })
 vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true })
 
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>bt",
+	[[&showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"]],
+	{ expr = true, silent = true }
+)
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, desc = "BufferLineCyclePrev" })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, desc = "BufferLineCycleNext" })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>ts",
+	[[&laststatus ? ":set laststatus=0\<cr>" : ":set laststatus=2\<cr>"]],
+	{ expr = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>Ft",
+	[[&foldcolumn ? ":set foldcolumn=0\<cr>" : ":set foldcolumn=1\<cr>"]],
+	{ expr = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>nt",
+	[[&number ? ":set nonumber norelativenumber\<cr>" : ":set number relativenumber\<cr>"]],
+	{ expr = true, silent = true }
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>rl",
+	[[&cursorline ? ":lua vim.opt.cursorline=false\<cr>" : ":set cursorline\<cr>"]],
+	{ expr = true, silent = true }
+)
 
 vim.keymap.set("i", "<A-m>", function()
 	return vim.fn["codeium#Accept"]()
@@ -75,8 +109,11 @@ local mappings_leader = {
 		r = { "<cmd>AerialToggle<cr>", "AerialToggle" },
 		t = { "<cmd>lua require('hlargs').toggle()<cr>", "Highlight Args" },
 	},
-
 	b = {
+		p = { "<cmd>BufferLinePick<cr>", "BufferlinePick" },
+	},
+
+	B = {
 		t = { "<cmd>Barbecue toggle<cr>", "Barbecue Toggle" },
 		u = { "<cmd>lua require('barbecue.ui').update()<cr>", "Barbecue Update" },
 		p = { "<cmd>lua require('barbecue.ui').navigate(-2)<cr>", "Barbecue Previous" },
@@ -90,6 +127,7 @@ local mappings_leader = {
 		t = { "<cmd>ChatGPTRun translate<CR>", "Translate" },
 		k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords" },
 		d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" },
+		A = { "<cmd>ChatGPTActAs<CR>", "Act As" },
 		a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests" },
 		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" },
 		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize" },
@@ -174,6 +212,7 @@ local mappings_leader = {
 		D = { "<cmd>DiffviewClose<cr>", "DiffviewClose" },
 		t = { "<cmd>GitToggle<cr>", "Git Status" },
 		l = { "<cmd>GitBlameToggle<cr>", "Git Blame" },
+		st = { "<cmd>Gitsigns toggle_signs<cr>", "Git Sign Toggle" },
 	},
 
 	h = { "<cmd>nohlsearch<cr>", "No Highlight Search" },
@@ -182,6 +221,7 @@ local mappings_leader = {
 	i = {
 		ih = { "<cmd>IlluminatePause<cr>", "IlluminatePause" },
 		is = { "<cmd>IlluminateResume<cr>", "IlluminateResume" },
+		t = { "<cmd>IndentBlanklineToggle<cr>", "Indent Blankline Toggle" },
 	},
 
 	j = { "<Plug>RestNvim", "Rest API" },
@@ -208,6 +248,8 @@ local mappings_leader = {
 	},
 	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
+	rt = { "<cmd>ScrollbarToggle<cr>", "Scrollbar Toggle" },
+	rc = { "<cmd>SmoothCursorToggle<cr>", "SmoothCursor Toggle" },
 
 	S = { "<cmd>lua require('spectre').toggle()<cr>", "Spectre Toggle" },
 	s = {
