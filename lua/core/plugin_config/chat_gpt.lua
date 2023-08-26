@@ -16,7 +16,6 @@ vim.env.OPENAI_API_KEY = file_contents
 
 require("chatgpt").setup({
 	api_key = nil,
-	api_host_cmd = "echo -n 'api.openai.com'",
 	yank_register = "+",
 	edit_with_instructions = {
 		diff = false,
