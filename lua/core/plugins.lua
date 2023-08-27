@@ -322,7 +322,16 @@ local plugins = {
 		"nyngwang/NeoZoom.lua",
 		"AckslD/swenv.nvim",
 		"vim-scripts/Tabmerge",
-
+		{ "echasnovski/mini.operators", version = false },
+		{ "tzachar/highlight-undo.nvim", config = true },
+		{
+			"sustech-data/wildfire.nvim",
+			event = "VeryLazy",
+			dependencies = { "nvim-treesitter/nvim-treesitter" },
+			config = function()
+				require("wildfire").setup()
+			end,
+		},
 		{
 			"windwp/nvim-spectre",
 			config = function()
