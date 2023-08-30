@@ -323,6 +323,7 @@ local plugins = {
 		"AckslD/swenv.nvim",
 		"vim-scripts/Tabmerge",
 		"dyng/ctrlsf.vim",
+		"anuvyklack/hydra.nvim",
 		{ "echasnovski/mini.operators", version = false },
 		{ "tzachar/highlight-undo.nvim", config = true },
 		{
