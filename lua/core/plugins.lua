@@ -322,6 +322,7 @@ local plugins = {
 		"nyngwang/NeoZoom.lua",
 		"AckslD/swenv.nvim",
 		"vim-scripts/Tabmerge",
+		"dyng/ctrlsf.vim",
 		{ "echasnovski/mini.operators", version = false },
 		{ "tzachar/highlight-undo.nvim", config = true },
 		{

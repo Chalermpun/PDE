@@ -260,6 +260,8 @@ local mappings_leader = {
 			"Search on current file (V)",
 			mode = "v",
 		},
+		t = { "<cmd>CtrlSFToggle<cr>", "Search Toggle" },
+		f = { "<cmd>CtrlSF<cr>", "Search Words", mode = "v" },
 	},
 
 	t = {
