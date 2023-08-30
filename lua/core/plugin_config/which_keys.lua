@@ -170,7 +170,7 @@ local mappings_leader = {
 		p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
 		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
 		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-		s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+		s = { "<cmd>lua require'dapui'.open({reset = true})<cr>", "Reset" },
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 		T = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear Breakpoint" },
 		x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
