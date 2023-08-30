@@ -300,6 +300,7 @@ local mappings_leader = {
 		},
 		d = { "<cmd>lua require('core.plugin_config.Terminal.term').docker_client_toggle()<CR>", "Docker" },
 	},
+	y = { "<cmd>lua require('nvim-window').pick()<cr>", "Pick Window" },
 	z = {
 		z = { "<cmd>NeoZoomToggle<cr>", "NeoZoom" },
 		p = { "<cmd>CccPick<cr>", "Color Picker" },

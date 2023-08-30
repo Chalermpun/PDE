@@ -324,6 +324,7 @@ local plugins = {
 		"vim-scripts/Tabmerge",
 		"dyng/ctrlsf.vim",
 		"anuvyklack/hydra.nvim",
+		"https://gitlab.com/yorickpeterse/nvim-window.git",
 		{ "echasnovski/mini.operators", version = false },
 		{ "tzachar/highlight-undo.nvim", config = true },
 		{
