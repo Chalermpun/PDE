@@ -113,7 +113,7 @@ local mappings_leader = {
 
 	a = {
 		a = { "<cmd>WhichKey<cr>", "WhichKey" },
-		r = { "<cmd>AerialToggle<cr>", "AerialToggle" },
+		r = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
 		t = { "<cmd>lua require('hlargs').toggle()<cr>", "Highlight Args" },
 	},
 	b = {
@@ -191,7 +191,6 @@ local mappings_leader = {
 		p = { "<cmd>Telescope projects<CR>", "Telescope projects" },
 		r = { "<cmd>Telescope repo<CR>", "Telescope repo" },
 		y = { "<cmd>lua require('telescope').extensions.yank_history.yank_history()<CR>", "Telescope Yank History" },
-		a = { "<cmd>lua require('telescope').extensions.aerial.aerial()<CR>", "Telescope Aerial" },
 		o = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "Telescope Oldfiles" },
 		g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Telescope Live Grep" },
 		f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>", "Telescope Find Files" },

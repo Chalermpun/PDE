@@ -164,7 +164,7 @@ local plugins = {
 		"nvim-telescope/telescope-project.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
 		"cljoly/telescope-repo.nvim",
-		"stevearc/aerial.nvim",
+		"simrat39/symbols-outline.nvim",
 		"gbprod/yanky.nvim",
 		"kevinhwang91/nvim-bqf",
 		"chrisbra/unicode.vim",

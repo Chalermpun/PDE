@@ -5,15 +5,15 @@ local luasnip = require("luasnip")
 
 local kind_icons = {
 	Text = "",
-	Method = "󰆧",
+	Method = "󰊕",
 	Function = "󰊕",
 	Constructor = "",
 	Field = "󰇽",
-	Variable = "󰂡",
+	Variable = "β",
 	Class = "",
 	Interface = "",
 	Module = "",
-	Property = "",
+	Property = "",
 	Unit = "",
 	Value = "󰎠",
 	Enum = "",
@@ -26,9 +26,9 @@ local kind_icons = {
 	EnumMember = "",
 	Constant = "󰏿",
 	Struct = "",
-	Event = "",
+	Event = "",
 	Operator = "󰆕",
-	TypeParameter = "󰅲",
+	TypeParameter = "",
 }
 
 cmp.setup({
