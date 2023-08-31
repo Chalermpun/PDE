@@ -32,6 +32,14 @@ vim.keymap.set(
 	{ noremap = true, desc = "goto_preview_close_all" }
 )
 
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })

@@ -419,6 +419,11 @@ local plugins = {
 		"EdenEast/nightfox.nvim",
 		"catppuccin/nvim",
 		"marko-cerovac/material.nvim",
+		{
+			"folke/todo-comments.nvim",
+			dependencies = { "nvim-lua/plenary.nvim" },
+			config = true,
+		},
 		{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
 		{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 		"sainnhe/gruvbox-material",
