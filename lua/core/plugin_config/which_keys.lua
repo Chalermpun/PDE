@@ -1,3 +1,37 @@
+vim.keymap.set(
+	"n",
+	"gpd",
+	"<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+	{ noremap = true, desc = "goto_preview_definition" }
+)
+vim.keymap.set(
+	"n",
+	"gpt",
+	"<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+	{ noremap = true, desc = "goto_preview_type_definition" }
+)
+
+vim.keymap.set(
+	"n",
+	"gpi",
+	"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+	{ noremap = true, desc = "goto_preview_type_implementation" }
+)
+
+vim.keymap.set(
+	"n",
+	"gpr",
+	"<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+	{ noremap = true, desc = "goto_preview_type_references" }
+)
+
+vim.keymap.set(
+	"n",
+	"gP",
+	"<cmd>lua require('goto-preview').close_all_win()<CR>",
+	{ noremap = true, desc = "goto_preview_close_all" }
+)
+
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
@@ -195,6 +229,7 @@ local mappings_leader = {
 		g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Telescope Live Grep" },
 		f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<CR>", "Telescope Find Files" },
 		b = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", "Telescope File Browser" },
+		a = { "<cmd>lua require('nvim-navbuddy').open()<CR>", "Nav Buddy" },
 	},
 
 	g = {

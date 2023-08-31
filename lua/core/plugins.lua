@@ -169,6 +169,26 @@ local plugins = {
 		"kevinhwang91/nvim-bqf",
 		"chrisbra/unicode.vim",
 		{
+			"rmagatti/goto-preview",
+			config = function()
+				require("goto-preview").setup({})
+			end,
+		},
+		{
+			"neovim/nvim-lspconfig",
+			dependencies = {
+				{
+					"SmiteshP/nvim-navbuddy",
+					dependencies = {
+						"SmiteshP/nvim-navic",
+						"MunifTanjim/nui.nvim",
+					},
+					opts = { lsp = { auto_attach = true } },
+				},
+			},
+			-- your lsp config or other stuff
+		},
+		{
 			"folke/trouble.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
