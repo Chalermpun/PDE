@@ -58,6 +58,13 @@ vim.api.nvim_set_keymap(
 	{ expr = true, silent = true }
 )
 
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>rp",
+	[[&wrap ? ":set nowrap\<cr>" : ":set wrap\<cr>"]],
+	{ expr = true, silent = true }
+)
+
 vim.keymap.set("i", "<A-m>", function()
 	return vim.fn["codeium#Accept"]()
 end, { expr = true, desc = "Codeium Accept" })
