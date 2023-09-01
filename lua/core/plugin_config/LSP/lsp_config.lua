@@ -13,6 +13,7 @@ local servers = {
 	-- 		},
 	-- 	},
 	-- },
+	emmet_ls = {},
 	jedi_language_server = {},
 	rust_analyzer = {
 		settings = {
