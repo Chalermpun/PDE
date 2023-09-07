@@ -144,7 +144,6 @@ require("chatgpt").setup({
 	},
 	openai_edit_params = {
 		model = "code-davinci-edit-001",
-+		max_tokens = 16000,
 		temperature = 0,
 		top_p = 1,
 		n = 1,
