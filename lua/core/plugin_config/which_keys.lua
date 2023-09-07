@@ -361,3 +361,11 @@ local mappings_leader = {
 
 whichkey.setup(conf)
 whichkey.register(mappings_leader, leaders)
+
+-- l / d / , (1 / 5 / 10) Increase the value times delta of the slider.
+-- h / s / m (1 / 5 / 10) Decrease the value times delta of the slider.
+-- mapping: H / M / L (0 / 50 / 100), 1 - 9 (10% - 90%)
+-- mapping: a Toggle show/hide alpha (transparency) slider.
+-- mapping: r Reset input and output to default, and hide alpha slider and previous colors palette.
+-- mapping: o Toggle output mode. See |ccc-option-outputs|.
+-- mapping: i Toggle input mode. See |ccc-option-inputs|.
