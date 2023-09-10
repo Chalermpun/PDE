@@ -8,9 +8,6 @@ local tokei = "tokei"
 -- Bottom
 local bottom = "btm"
 
--- navi
-local navi = "navi fn welcome"
-
 local project_info = Terminal:new({
 	cmd = tokei,
 	dir = "git_dir",
@@ -33,27 +30,12 @@ local system_info = Terminal:new({
 	close_on_exit = true,
 })
 
-local interactive_cheatsheet = Terminal:new({
-	cmd = navi,
-	dir = "git_dir",
-	hidden = true,
-	direction = "float",
-	float_opts = {
-		border = "double",
-	},
-	close_on_exit = true,
-})
-
 function M.project_info_toggle()
 	project_info:toggle()
 end
 
 function M.system_info_toggle()
 	system_info:toggle()
-end
-
-function M.interactive_cheatsheet_toggle()
-	interactive_cheatsheet:toggle()
 end
 
 -- Open a terminal
@@ -78,52 +60,6 @@ function M.open_term(cmd, opts)
 		on_exit = opts.on_exit,
 	})
 	new_term:open(opts.size, opts.direction)
-end
-
------------------- Cheatsheet ----------------------------
-local lang = ""
-local function cht_on_open(term)
-	vim.cmd("stopinsert")
-	vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-	vim.api.nvim_buf_set_name(term.bufnr, "cheatsheet-" .. term.bufnr)
-	vim.api.nvim_buf_set_option(term.bufnr, "filetype", "cheat")
-	vim.api.nvim_buf_set_option(term.bufnr, "syntax", lang)
-end
-
-local function cht_on_exit(term)
-	vim.cmd([[normal gg]])
-end
-
-function M.cht()
-	lang = ""
-	vim.ui.input({ prompt = "cht.sh input: " }, function(input)
-		local cmd = ""
-		if input == "" or not input then
-			return
-		elseif input == "h" then
-			cmd = ""
-		else
-			local search = ""
-			local delimiter = " "
-			for w in (input .. delimiter):gmatch("(.-)" .. delimiter) do
-				if lang == "" then
-					lang = w
-				else
-					if search == "" then
-						search = w
-					else
-						search = search .. "+" .. w
-					end
-				end
-			end
-			cmd = lang
-			if search ~= "" then
-				cmd = cmd .. "/" .. search
-			end
-		end
-		cmd = "curl cht.sh/" .. cmd
-		M.open_term(cmd, { on_open = cht_on_open, on_exit = cht_on_exit })
-	end)
 end
 
 function M.so()

@@ -405,7 +405,7 @@ local plugins = {
 		},
 	},
 
-	{ -- Document Generator
+	{ -- Document
 		"kkoomen/vim-doge",
 		build = function()
 			vim.cmd([[call doge#install()]])
@@ -414,7 +414,26 @@ local plugins = {
 			"danymat/neogen",
 		},
 	},
-
+	{
+		"luckasRanarison/nvim-devdocs",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		opts = {},
+		cmd = {
+			"DevdocsFetch",
+			"DevdocsInstall",
+			"DevdocsUninstall",
+			"DevdocsOpen",
+			"DevdocsOpenFloat",
+			"DevdocsOpenCurrent",
+			"DevdocsOpenCurrentFloat",
+			"DevdocsUpdate",
+			"DevdocsUpdateAll",
+		},
+	},
 	{ -- Interface
 		"EdenEast/nightfox.nvim",
 		"catppuccin/nvim",

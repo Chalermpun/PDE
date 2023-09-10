@@ -338,11 +338,6 @@ local mappings_leader = {
 		name = "External",
 		p = { "<cmd>lua require('core.plugin_config.Terminal.term').project_info_toggle()<CR>", "Project Info" },
 		s = { "<cmd>lua require('core.plugin_config.Terminal.term').system_info_toggle()<CR>", "System Info" },
-		c = { "<cmd>lua require('core.plugin_config.Terminal.term').cht()<CR>", "Cheatsheet" },
-		i = {
-			"<cmd>lua require('core.plugin_config.Terminal.term').interactive_cheatsheet_toggle()<CR>",
-			"Interactive Cheatsheet",
-		},
 		o = {
 			"<cmd>lua require('core.plugin_config.Terminal.term').so()<CR>",
 			"Stack Overflow",

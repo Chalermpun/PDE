@@ -7,7 +7,6 @@ current_directory=$(pwd)
 # Set Zsh as the default shell
 chsh -s $(which zsh)
 
-
 # Install Oh My Zsh (https://ohmyz.sh/)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -20,9 +19,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
 
 # Update the Zsh configuration file (.zshrc) with the new plugins
-sed 's/^plugins=(git/plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-fzf-history-search/g' ~/.zshrc > ~/zshrc.txt
+sed 's/^plugins=(git/plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-fzf-history-search/g' ~/.zshrc >~/zshrc.txt
 mv ~/zshrc.txt ~/.zshrc
-
 
 git clone https://github.com/neovim/neovim
 cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -35,33 +33,31 @@ cp -r "${current_directory}/lua" ~/.config/nvim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp "${current_directory}/.tmux.conf" ~/
 
-
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >>~/.zshrc
 source "$HOME/.cargo/env"
 cargo install lsd
 
-echo alias ls='lsd' >> ~/.zshrc
-
+echo alias ls='lsd' >>~/.zshrc
 
 declare -a fonts=(
-    JetBrainsMono
+	JetBrainsMono
 )
 
 version='3.0.2'
 fonts_dir="${HOME}/.local/share/fonts"
 
 if [[ ! -d "$fonts_dir" ]]; then
-    mkdir -p "$fonts_dir"
+	mkdir -p "$fonts_dir"
 fi
 
 for font in "${fonts[@]}"; do
-    zip_file="${font}.zip"
-    download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
-    echo "Downloading $download_url"
-    wget "$download_url"
-    unzip "$zip_file" -d "$fonts_dir"
-    rm "$zip_file"
+	zip_file="${font}.zip"
+	download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
+	echo "Downloading $download_url"
+	wget "$download_url"
+	unzip "$zip_file" -d "$fonts_dir"
+	rm "$zip_file"
 done
 
 find "$fonts_dir" -name '*Windows Compatible*' -delete
