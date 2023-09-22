@@ -18,7 +18,7 @@ local plugins = {
 	{ -- Coding
 		"abecodes/tabout.nvim",
 		"derektata/lorem.nvim",
-		-- lazy.nvim:
+		"mg979/vim-visual-multi",
 		{
 			"uga-rosa/ccc.nvim",
 			opts = {},
@@ -571,6 +571,10 @@ local plugins = {
 
 	{ -- Markdown
 		"jbyuki/nabla.nvim",
+		{
+			"AckslD/nvim-FeMaco.lua",
+			config = 'require("femaco").setup()',
+		},
 
 		{
 			"dhruvasagar/vim-table-mode",

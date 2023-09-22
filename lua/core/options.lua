@@ -4,6 +4,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.codeium_disable_bindings = 1
+vim.g.VM_default_mappings = 0
+vim.g.VM_maps = {
+	["Find Under"] = "<leader>mn",
+}
 
 vim.opt.splitright = true
 vim.opt.backspace = "2"
