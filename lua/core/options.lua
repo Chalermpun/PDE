@@ -7,8 +7,10 @@ vim.g.codeium_disable_bindings = 1
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
 	["Find Under"] = "<leader>mn",
+	["Find Subword Under"] = "<leader>mn",
 	["Select Cursor Down"] = "<M-j>",
 	["Select Cursor Up"] = "<M-k>",
+	["Align"] = "<M-a>",
 	["Exit"] = "<C-C>",
 }
 
@@ -41,7 +43,7 @@ vim.o.mouse = "a"
 vim.o.termguicolors = true
 
 -- Folding
-vim.o.foldcolumn = "1"
+vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true

@@ -1,5 +1,5 @@
 -- Colorscheme
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme nightfly")
 vim.cmd("highlight visual guibg=#ffffff guifg=#000000")
 vim.cmd("highlight HighlightUndo guibg=#ffffff guifg=#000000")
 
