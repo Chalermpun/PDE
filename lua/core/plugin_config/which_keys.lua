@@ -298,7 +298,7 @@ local mappings_leader = {
 	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
 	rt = { "<cmd>ScrollbarToggle<cr>", "Scrollbar Toggle" },
-	rc = { "<cmd>SmoothCursorToggle<cr>", "SmoothCursor Toggle" },
+	rc = { "<cmd>SmoothCursorFancyToggle<cr>", "SmoothCursor Toggle" },
 
 	S = { "<cmd>lua require('spectre').toggle()<cr>", "Spectre Toggle" },
 	s = {
