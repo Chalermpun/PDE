@@ -397,8 +397,9 @@ local plugins = {
 			"gen740/SmoothCursor.nvim",
 			config = function()
 				require("smoothcursor").setup({
+					cursor = "",
 					fancy = {
-						enable = true, -- enable fancy mode
+						enable = false, -- enable fancy mode
 						head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
 						body = {
 							{ cursor = "󰝥", texthl = "SmoothCursorRed" },
