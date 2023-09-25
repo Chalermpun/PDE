@@ -4,15 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.codeium_disable_bindings = 1
-vim.g.VM_default_mappings = 0
-vim.g.VM_maps = {
-	["Find Under"] = "<leader>mn",
-	["Find Subword Under"] = "<leader>mn",
-	["Select Cursor Down"] = "<M-j>",
-	["Select Cursor Up"] = "<M-k>",
-	["Align"] = "<M-a>",
-	["Exit"] = "<C-C>",
-}
 
 vim.opt.splitright = true
 vim.opt.backspace = "2"

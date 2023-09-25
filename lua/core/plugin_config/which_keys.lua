@@ -55,7 +55,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
 vim.keymap.set("n", "<C-w>_", "<cmd>WindowsMaximizeVertically<cr>")
 vim.keymap.set("n", "<C-w>|", "<cmd>WindowsMaximizeHorizontally<cr>")
 vim.keymap.set("n", "<C-w>=", "<cmd>WindowsEqualize<cr>")
@@ -168,62 +167,15 @@ local mappings_leader = {
 		p = { "<cmd>lua require('barbecue.ui').navigate(-2)<cr>", "Barbecue Previous" },
 	},
 
-	C = {
-		name = "ChatGPT",
-		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
-		g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction" },
-		t = { "<cmd>ChatGPTRun translate<CR>", "Translate" },
-		k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords" },
-		d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring" },
-		A = { "<cmd>ChatGPTActAs<CR>", "Act As" },
-		a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests" },
-		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code" },
-		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize" },
-		f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs" },
-		x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code" },
-		r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit" },
-		l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis" },
-	},
-
 	c = {
 		g = { "<cmd>Neogen func<Cr>", "Func Doc" },
 		G = { "<cmd>Neogen class<Cr>", "Class Doc" },
 		d = { "<cmd>DogeGenerate<Cr>", "Generate Doc" },
 	},
 
-	D = { -- Database
-		name = "Database",
-		u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
-		f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
-		r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
-		q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
-	},
-
 	d = {
 		dh = { vim.diagnostic.hide, "Hide Diagnostic" },
 		ds = { vim.diagnostic.show, "Show Diagnostic" },
-		R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
-		E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
-		C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
-		U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
-		b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-		dd = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-		e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
-		g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-		h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
-		S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
-		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-		p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
-		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-		s = { "<cmd>lua require'dapui'.open({reset = true})<cr>", "Reset" },
-		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-		T = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear Breakpoint" },
-		x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
-		u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
 	},
 
 	e = { vim.diagnostic.open_float, "Open Float Diagnostic" },
@@ -273,8 +225,6 @@ local mappings_leader = {
 		t = { "<cmd>IndentBlanklineToggle<cr>", "Indent Blankline Toggle" },
 	},
 
-	j = { "<Plug>RestNvim", "Rest API" },
-
 	m = {
 		name = "Minimap",
 		o = { "<cmd>lua require('mini.map').open()<cr>", "Minimap Open" },
@@ -282,33 +232,12 @@ local mappings_leader = {
 		f = { "<cmd>lua require('mini.map').toggle_focus()<cr>", "Minimap Focus" },
 	},
 
-	n = {
-		name = "Neotest",
-		a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-		f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
-		F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
-		l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
-		L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last" },
-		n = { "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
-		N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
-		o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
-		S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-		s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-	},
-	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
 	rt = { "<cmd>ScrollbarToggle<cr>", "Scrollbar Toggle" },
-	rc = { "<cmd>SmoothCursorFancyToggle<cr>", "SmoothCursor Toggle" },
+	rc = { "<cmd>SmoothCursorToggle<cr>", "SmoothCursor Toggle" },
 
 	S = { "<cmd>lua require('spectre').toggle()<cr>", "Spectre Toggle" },
 	s = {
-		w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Search current word (N)", mode = "n" },
-		v = { "<cmd>lua require('spectre').open_visual()<cr>", "Search current word (V)", mode = "v" },
-		p = {
-			"<cmd>lua require('spectre').open_file_search({select_word=true})<cr>",
-			"Search on current file (V)",
-			mode = "v",
-		},
 		t = { "<cmd>CtrlSFToggle<cr>", "Search Toggle" },
 		f = { "<cmd>CtrlSF<cr>", "Search Words", mode = "v" },
 	},
@@ -333,24 +262,18 @@ local mappings_leader = {
 
 	v = { s = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Switch Python Environment" } },
 
-	w = { "<cmd>wa<cr>", "Save All" },
 	x = {
 		name = "External",
-		p = { "<cmd>lua require('core.plugin_config.Terminal.term').project_info_toggle()<CR>", "Project Info" },
 		s = { "<cmd>lua require('core.plugin_config.Terminal.term').system_info_toggle()<CR>", "System Info" },
-		o = {
-			"<cmd>lua require('core.plugin_config.Terminal.term').so()<CR>",
-			"Stack Overflow",
-		},
-		d = { "<cmd>lua require('core.plugin_config.Terminal.term').docker_client_toggle()<CR>", "Docker" },
 	},
+
+	w = { "<cmd>wa<cr>", "Save All" },
 	y = { "<cmd>lua require('nvim-window').pick()<cr>", "Pick Window" },
 	z = {
 		z = { "<cmd>NeoZoomToggle<cr>", "NeoZoom" },
 		p = { "<cmd>CccPick<cr>", "Color Picker" },
 		c = { "<cmd>CccConvert<cr>", "Color Convert" },
 		h = { "<cmd>CccHighlighterToggle<cr>", "Color Toggle Highlighter" },
-		t = { "<cmd>Telekasten panel<cr>", "Telekasten" },
 	},
 }
 

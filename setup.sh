@@ -64,14 +64,9 @@ find "$fonts_dir" -name '*Windows Compatible*' -delete
 
 fc-cache -fv
 
-pip install notebook nbclassic jupyter-console jupynium visidata pynvim
-cargo install viu
-cargo install tokei
+pip install  visidata pynvim
 cargo install bottom --locked
-cargo install navi
-cargo install so
 cargo install fd-find
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 rm -rf Dockerfile README.md init.lua lazy-lock.json lua neovim setup.sh
 
 # don't forget setting system-site-package for jedi-language-server-protocal (lsp-config)

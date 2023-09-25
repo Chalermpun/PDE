@@ -18,7 +18,6 @@ local plugins = {
 	{ -- Coding
 		"abecodes/tabout.nvim",
 		"derektata/lorem.nvim",
-		"mg979/vim-visual-multi",
 		{
 			"uga-rosa/ccc.nvim",
 			opts = {},
@@ -78,15 +77,6 @@ local plugins = {
 			opts = {},
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 		},
-
-		{
-			"nvim-neo-tree/neo-tree.nvim",
-			dependencies = {
-				"nvim-lua/plenary.nvim",
-				"nvim-tree/nvim-web-devicons",
-				"MunifTanjim/nui.nvim",
-			},
-		},
 	},
 
 	-- Git related plugins
@@ -112,11 +102,6 @@ local plugins = {
 	},
 
 	{ -- Terminal Plugin
-
-		{
-			"kiyoon/jupynium.nvim",
-			build = "pip3 install --user .",
-		},
 		{
 			"akinsho/toggleterm.nvim",
 			keys = { [[<C-\>]] },
@@ -126,7 +111,6 @@ local plugins = {
 				require("core.plugin_config.Terminal.toggleterm").setup()
 			end,
 		},
-
 		{
 			"jpalardy/vim-slime",
 			config = function()
@@ -162,7 +146,6 @@ local plugins = {
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		"nvim-telescope/telescope-project.nvim",
-		"nvim-telescope/telescope-media-files.nvim",
 		"cljoly/telescope-repo.nvim",
 		"simrat39/symbols-outline.nvim",
 		"gbprod/yanky.nvim",
@@ -356,12 +339,6 @@ local plugins = {
 			end,
 		},
 		{
-			"windwp/nvim-spectre",
-			config = function()
-				require("spectre").setup()
-			end,
-		},
-		{
 			"akinsho/bufferline.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
 			config = function()
@@ -397,8 +374,9 @@ local plugins = {
 			"gen740/SmoothCursor.nvim",
 			config = function()
 				require("smoothcursor").setup({
+					cursor = "",
 					fancy = {
-						enable = true, -- enable fancy mode
+						enable = false, -- enable fancy mode
 						head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
 						body = {
 							{ cursor = "󰝥", texthl = "SmoothCursorRed" },
@@ -471,9 +449,6 @@ local plugins = {
 		},
 		"rebelot/kanagawa.nvim",
 		"freddiehaddad/feline.nvim",
-		"dstein64/vim-startuptime",
-		"eandrju/cellular-automaton.nvim",
-		"tamton-aquib/zone.nvim",
 		{
 			"stevearc/dressing.nvim",
 			opts = {},
@@ -511,132 +486,21 @@ local plugins = {
 
 	{ -- DAP
 		{
-
-			"ThePrimeagen/refactoring.nvim",
-			config = function()
-				require("refactoring").setup()
-			end,
-		},
-
-		{
-			"mfussenegger/nvim-dap",
-			event = "BufReadPre",
-			module = { "dap" },
-			dependencies = {
-				"theHamsta/nvim-dap-virtual-text",
-				"rcarriga/nvim-dap-ui",
-				"mfussenegger/nvim-dap-python",
-				"nvim-telescope/telescope-dap.nvim",
-				{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
-				"nvim-telescope/telescope-media-files.nvim",
-			},
-			config = function()
-				require("core.plugin_config.Dap.dap").setup()
-			end,
-		},
-		{
-			"nvim-neotest/neotest",
-			dependencies = {
-				"nvim-lua/plenary.nvim",
-				"nvim-treesitter/nvim-treesitter",
-				"antoinemadec/FixCursorHold.nvim",
-				"nvim-neotest/neotest-python",
-			},
-		},
-
-		{
 			"stevearc/overseer.nvim",
 			opts = {},
 		},
 	},
-
-	{ --- Database
-		"tpope/vim-dadbod",
-		dependencies = {
-			"kristijanhusak/vim-dadbod-ui",
-			"kristijanhusak/vim-dadbod-completion",
-		},
-		config = function()
-			require("core.plugin_config.dadbod").setup()
-		end,
-		cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
-	},
-
-	{ -- API
-		"NTBBloodbath/rest.nvim",
-		config = function()
-			require("rest-nvim").setup()
-		end,
-	},
-
 	{ -- AI
 		{
 			"Exafunction/codeium.vim",
 			event = "InsertEnter",
 		},
-		{
-			"jackMort/ChatGPT.nvim",
-			dependencies = {
-				"MunifTanjim/nui.nvim",
-				"nvim-lua/plenary.nvim",
-				"nvim-telescope/telescope.nvim",
-			},
-		},
 	},
 
 	{ -- Markdown
-		"jbyuki/nabla.nvim",
-		{
-			"AckslD/nvim-FeMaco.lua",
-			config = 'require("femaco").setup()',
-		},
-
-		{
-			"dhruvasagar/vim-table-mode",
-			ft = { "markdown", "org", "norg" },
-		},
-		{
-			"iamcco/markdown-preview.nvim",
-			build = function()
-				vim.fn["mkdp#util#install"]()
-			end,
-			ft = "markdown",
-			cmd = { "MarkdownPreview" },
-			dependencies = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
-		},
-
-		{
-			"lukas-reineke/headlines.nvim",
-			opts = {},
-			ft = { "markdown", "org", "norg" },
-		},
-
-		{
-			"renerocksai/telekasten.nvim",
-			dependencies = { "nvim-telescope/telescope.nvim" },
-			opts = {
-				home = vim.env.HOME .. "/zettelkasten",
-			},
-			ft = { "markdown" },
-			config = function()
-				require("telekasten").setup({
-					home = vim.fn.expand("~/zettelkasten"),
-				})
-			end,
-		},
-		{
-			"mzlogin/vim-markdown-toc",
-			ft = { "markdown" },
-		},
-
 		{
 			"nvim-neorg/neorg",
 			ft = "norg",
-		},
-		{
-			"jakewvincent/mkdnflow.nvim",
-			ft = { "markdown" },
-			opts = {},
 		},
 	},
 }

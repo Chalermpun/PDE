@@ -2,22 +2,8 @@ local M = {}
 
 local Terminal = require("toggleterm.terminal").Terminal
 
--- Tokei
-local tokei = "tokei"
-
 -- Bottom
 local bottom = "btm"
-
-local project_info = Terminal:new({
-	cmd = tokei,
-	dir = "git_dir",
-	hidden = true,
-	direction = "float",
-	float_opts = {
-		border = "double",
-	},
-	close_on_exit = false,
-})
 
 local system_info = Terminal:new({
 	cmd = bottom,
@@ -30,9 +16,6 @@ local system_info = Terminal:new({
 	close_on_exit = true,
 })
 
-function M.project_info_toggle()
-	project_info:toggle()
-end
 
 function M.system_info_toggle()
 	system_info:toggle()
@@ -60,41 +43,6 @@ function M.open_term(cmd, opts)
 		on_exit = opts.on_exit,
 	})
 	new_term:open(opts.size, opts.direction)
-end
-
-function M.so()
-	local buf = vim.api.nvim_get_current_buf()
-	lang = ""
-	file_type = vim.api.nvim_buf_get_option(buf, "filetype")
-	vim.ui.input({ prompt = "so input: ", default = file_type .. " " }, function(input)
-		local cmd = ""
-		if input == "" or not input then
-			return
-		elseif input == "h" then
-			cmd = "-h"
-		else
-			cmd = input
-		end
-		cmd = "so " .. cmd
-		M.open_term(cmd, { direction = "float" })
-	end)
-end
-
--- Docker
-local docker_tui = "lazydocker"
-
-local docker_client = Terminal:new({
-	cmd = docker_tui,
-	dir = "git_dir",
-	hidden = true,
-	direction = "float",
-	float_opts = {
-		border = "double",
-	},
-})
-
-function M.docker_client_toggle()
-	docker_client:toggle()
 end
 
 return M
