@@ -105,6 +105,7 @@ vim.api.nvim_set_keymap(
 	[[&wrap ? ":set nowrap\<cr>" : ":set wrap\<cr>"]],
 	{ expr = true, silent = true }
 )
+vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
 
 vim.keymap.set("i", "<A-m>", function()
 	return vim.fn["codeium#Accept"]()
