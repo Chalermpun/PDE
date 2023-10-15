@@ -90,6 +90,7 @@ require("illuminate").configure({
 	filetypes_denylist = {
 		"dirvish",
 		"fugitive",
+    "alpha"
 	},
 })
 
@@ -108,6 +109,6 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	end,
 })
 
-vim.cmd([[IlluminatePause]])
+-- vim.cmd([[IlluminatePause]])
 
 return M
