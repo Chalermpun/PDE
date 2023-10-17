@@ -477,7 +477,10 @@ local plugins = {
 	},
 
 	{ -- Markdown
-		{ "dhruvasagar/vim-table-mode", ft = { "markdown", "org", "norg" } },
+		{
+			"dhruvasagar/vim-table-mode",
+			ft = { "markdown", "org", "norg" },
+		},
 		{
 			"iamcco/markdown-preview.nvim",
 			build = function()
@@ -507,7 +510,22 @@ local plugins = {
 				})
 			end,
 		},
-		-- { "AckslD/nvim-FeMaco.lua", ft = { "markdown" }, opts = {} },
+		{
+			"mzlogin/vim-markdown-toc",
+			ft = { "markdown" },
+		},
+	},
+
+	{
+		"jbyuki/nabla.nvim",
+		config = function()
+			require("nabla").enable_virt()
+		end,
+	},
+
+	{
+		"nvim-neorg/neorg",
+		ft = "norg",
 	},
 }
 

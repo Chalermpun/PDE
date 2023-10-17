@@ -124,10 +124,9 @@ local mappings_leader = {
 	e = { vim.diagnostic.open_float, "Open Float Diagnostic" },
 	f = {
 		name = "Telescope",
-		s = {
-			"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-			"Telescope Live Grep Args",
-		},
+		s = { "<cmd>Telescope symbols<CR>", "Telescope Symbols" },
+		p = { "<cmd>Telescope projects<CR>", "Telescope Projects" },
+		r = { "<cmd>Telescope repo<CR>", "Telescope Repos" },
 		y = { "<cmd>lua require('telescope').extensions.yank_history.yank_history()<CR>", "Telescope Yank History" },
 		a = { "<cmd>lua require('telescope').extensions.aerial.aerial()<CR>", "Telescope Aerial" },
 		o = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "Telescope Oldfiles" },
@@ -188,7 +187,7 @@ local mappings_leader = {
 		S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
 		s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
 	},
-
+	p = { n = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" } },
 	q = { "<cmd>qa!<cr>", "Quit ALL" },
 	r = {
 		s = { "<cmd>IronRepl<cr>", "IronRepl" },
