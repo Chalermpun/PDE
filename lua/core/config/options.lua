@@ -2,10 +2,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Enable LazyVim auto format
+-- Enable NeoVim auto format
 vim.g.autoformat = true
 
--- LazyVim root dir detection
+-- Neovim root dir detection
 -- Each entry can be:
 -- * the name of a detector function like `lsp` or `cwd`
 -- * a pattern or array of patterns like `.git` or `lua`.
@@ -92,7 +92,7 @@ else
 	vim.opt.foldmethod = "indent"
 end
 
-vim.o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
+vim.o.formatexpr = "v:lua.require'core.util'.format.formatexpr()"
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

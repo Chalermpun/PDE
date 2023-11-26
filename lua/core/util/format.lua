@@ -1,6 +1,6 @@
 local Util = require("core.util")
 
----@class lazyvim.util.format
+---@class Neovim.util.format
 ---@overload fun(opts?: {force?:boolean})
 local M = setmetatable({}, {
   __call = function(m, ...)
@@ -127,7 +127,7 @@ function M.format(opts)
   end
 
   if not done and opts and opts.force then
-    Util.warn("No formatter available", { title = "LazyVim" })
+    Util.warn("No formatter available", { title = "NeoVim" })
   end
 end
 
@@ -137,7 +137,7 @@ function M.health()
   local has_extra = vim.tbl_contains(Config.spec.modules, "lazyvim.plugins.extras.lsp.none-ls")
   if has_plugin and not has_extra then
     Util.warn({
-      "`conform.nvim` and `nvim-lint` are now the default formatters and linters in LazyVim.",
+      "`conform.nvim` and `nvim-lint` are now the default formatters and linters in NeoVim.",
       "",
       "You can use those plugins together with `none-ls.nvim`,",
       "but you need to enable the `lazyvim.plugins.extras.lsp.none-ls` extra,",

@@ -1,6 +1,6 @@
 local Util = require("core.util")
 
----@class lazyvim.util.toggle
+---@class Neovim.util.toggle
 local M = {}
 
 ---@param silent boolean?

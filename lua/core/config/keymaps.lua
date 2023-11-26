@@ -168,6 +168,39 @@ map("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true, desc = "DiffviewTo
 map("n", "<leader>gl", "<cmd>GitBlameToggle<cr>", { silent = true, desc = "GitBlameToggle" })
 map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
 map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
+map("n", "<leader>Bt", "<cmd>Barbecue toggle<cr>", { desc = "Barbecue Toggle" })
+map("n", "<leader>it", "<cmd>IBLToggle<cr>", { desc = "Indent Blankline Toggle" })
+map("n", "<leader>rt", "<cmd>ScrollbarToggle<cr>", { desc = "ScrollbarToggle" })
+map("n", "<leader>rc", "<cmd>SmoothCursorToggle<cr>", { desc = "SmoothCursorToggle" })
+map("n", "<leader>zz", "<cmd>NeoZoomToggle<cr>", { desc = "NeoZoomToggle" })
+map(
+	"n",
+	"<leader>bt",
+	[[&showtabline ? ":set showtabline=0\<cr>" : ":set showtabline=2\<cr>"]],
+	{ expr = true, silent = true, desc = "BufferLine Toggle" }
+)
+
+map(
+	"n",
+	"<leader>ts",
+	[[&laststatus ? ":set laststatus=0\<cr>" : ":set laststatus=2\<cr>"]],
+	{ expr = true, silent = true, desc = "StatusLine Toggle" }
+)
+
+map(
+	"n",
+	"<leader>Ft",
+	[[&foldcolumn ? ":set foldcolumn=0\<cr>" : ":set foldcolumn=1\<cr>"]],
+	{ expr = true, silent = true, desc = "Folding Toggle" }
+)
+
+map(
+	"n",
+	"<leader>rl",
+	[[&cursorline ? ":lua vim.opt.cursorline=false\<cr>" : ":set cursorline\<cr>"]],
+	{ expr = true, silent = true, desc = "Folding Toggle" }
+)
+
 
 -- formatting
 map({ "n", "v" }, "<leader>cf", function()

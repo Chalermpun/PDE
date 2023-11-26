@@ -21,7 +21,7 @@ function M.setup(_, opts)
 	for _, key in ipairs({ "format_on_save", "format_after_save" }) do
 		if opts[key] then
 			Util.warn(
-				("Don't set `opts.%s` for `conform.nvim`.\n**LazyVim** will use the conform formatter automatically"):format(
+				("Don't set `opts.%s` for `conform.nvim`.\n**NeoVim** will use the conform formatter automatically"):format(
 					key
 				)
 			)
@@ -77,13 +77,12 @@ return {
 			if plugin.config ~= M.setup then
 				Util.error({
 					"Don't set `plugin.config` for `conform.nvim`.\n",
-					"This will break **LazyVim** formatting.\n",
-					"Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
+					"This will break **NeoVim** formatting.\n",
 				}, { title = "LazyVim" })
 			end
 			---@class ConformOpts
 			local opts = {
-				-- LazyVim will use these options when formatting with the conform.nvim formatter
+				-- NeoVim will use these options when formatting with the conform.nvim formatter
 				format = {
 					timeout_ms = 3000,
 					async = false, -- not recommended to change

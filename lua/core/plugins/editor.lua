@@ -546,7 +546,7 @@ return {
 				},
 				window = {
 					side = "right",
-					width = 18, -- set to 1 for a pure scrollbar :)
+					width = 16, -- set to 1 for a pure scrollbar :)
 					winblend = 15,
 					show_integration_count = false,
 					focusable = true,
@@ -559,4 +559,60 @@ return {
 			{ "<leader>mf", "<cmd>lua require('mini.map').toggle_focus()<cr>", desc = "Minimap Focus" },
 		},
 	},
+
+	-- LSP context winbar from your language server.
+	{
+		"utilyre/barbecue.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("barbecue").setup()
+		end,
+	},
+
+	-- subcursor to show scroll direction
+	{
+		"gen740/SmoothCursor.nvim",
+		config = function()
+			require("smoothcursor").setup({
+				cursor = "",
+				fancy = {
+					enable = false, -- enable fancy mode
+					head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
+					body = {
+						{ cursor = "󰝥", texthl = "SmoothCursorRed" },
+						{ cursor = "󰝥", texthl = "SmoothCursorOrange" },
+						{ cursor = "●", texthl = "SmoothCursorYellow" },
+						{ cursor = "●", texthl = "SmoothCursorGreen" },
+						{ cursor = "•", texthl = "SmoothCursorAqua" },
+						{ cursor = ".", texthl = "SmoothCursorBlue" },
+						{ cursor = ".", texthl = "SmoothCursorPurple" },
+					},
+					tail = { cursor = nil, texthl = "SmoothCursor" },
+				},
+			})
+		end,
+	},
+
+	-- Extensible Neovim Scrollbar
+	{
+		"petertriho/nvim-scrollbar",
+		dependencies = {
+			"kevinhwang91/nvim-hlslens",
+			"folke/tokyonight.nvim",
+		},
+		config = function()
+			require("scrollbar").setup()
+		end,
+	},
+
+  -- focus and maybe protect your left-rotated neck
+  {"nyngwang/NeoZoom.lua",
+  config = function()
+      require("neo-zoom").setup({})
+    end}
 }

@@ -132,7 +132,7 @@ function M.info()
   lines[#lines + 1] = "```lua"
   lines[#lines + 1] = "vim.g.root_spec = " .. vim.inspect(spec)
   lines[#lines + 1] = "```"
-  require("core.util").info(lines, { title = "LazyVim Roots" })
+  require("core.util").info(lines, { title = "NeoVim Roots" })
   return roots[1] and roots[1].paths[1] or vim.loop.cwd()
 end
 
@@ -142,7 +142,7 @@ M.cache = {}
 function M.setup()
   vim.api.nvim_create_user_command("LazyRoot", function()
     Util.root.info()
-  end, { desc = "LazyVim roots for the current buffer" })
+  end, { desc = "NeoVim roots for the current buffer" })
 
   vim.api.nvim_create_autocmd({ "LspAttach", "BufWritePost" }, {
     group = vim.api.nvim_create_augroup("lazyvim_root_cache", { clear = true }),
