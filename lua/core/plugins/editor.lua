@@ -1,15 +1,27 @@
 local Util = require("core.util")
 return {
-  -- git signs highlights text that has changed since the list
-  -- git commit, and also lets you interactively stage & unstage
-  -- hunks in a commit.
+	--allows all git file operations within neovim
+	"tpope/vim-fugitive",
+
+	-- A git blame plugin for see who commit the code
+	"f-person/git-blame.nvim",
+
+	--generate shareable file permalinks (with line ranges) for several git web frontend hosts.
+	"ruifm/gitlinker.nvim",
+
+	--gitignore generated
+	"wintermute-cell/gitignore.nvim",
+
+	-- git signs highlights text that has changed since the list
+	-- git commit, and also lets you interactively stage & unstage
+	-- hunks in a commit.
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
 		opts = {
 			signs = {
-        change = { text = "▎" },
-        delete = { text = "" },
+				change = { text = "▎" },
+				delete = { text = "" },
 				add = { text = "▎" },
 				topdelete = { text = "" },
 				changedelete = { text = "▎" },
@@ -37,6 +49,20 @@ return {
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 			end,
 		},
+	},
+
+	-- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+	{
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup({
+				win_config = { -- See ':h diffview-config-win_config'
+					position = "left",
+					width = 40,
+					win_opts = {},
+				},
+			})
+		end,
 	},
 
 	-- Automatically highlights other instances of the word under your cursor.
