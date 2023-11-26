@@ -44,7 +44,7 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- taken from runtime/lua/_editor.lua
 map(
 	"n",
-	"<leader>ur",
+	"<leader>h",
 	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
 	{ desc = "Redraw / clear hlsearch / diff update" }
 )
@@ -164,6 +164,10 @@ map("n", "<leader>uT", function()
 		vim.treesitter.start()
 	end
 end, { desc = "Toggle Treesitter Highlight" })
+map("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true, desc = "DiffviewToggle" })
+map("n", "<leader>gl", "<cmd>GitBlameToggle<cr>", { silent = true, desc = "GitBlameToggle" })
+map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
+map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
 
 -- formatting
 map({ "n", "v" }, "<leader>cf", function()
@@ -190,12 +194,8 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 local git = require("core.util.git")
 map("n", "<leader>gt", git.toggleFugitiveGit, { desc = "FugitiveGit" })
 map("n", "<leader>gi", "<cmd>Gitignore<cr>", { desc = "FugitiveGit" })
-map("n", "<C-g>", "<cmd>DiffviewToggle<cr>", { silent = true, desc = "DiffviewToggle" })
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { silent = true, desc = "DiffviewOpen" })
 map("n", "<leader>gD", "<cmd>DiffviewClose<cr>", { silent = true, desc = "DiffviewClose" })
-map("n", "<leader>gl", "<cmd>GitBlameToggle<cr>", { silent = true, desc = "GitBlameToggle" })
-map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
-map("n", "<leader>gst", "<cmd>Gitsigns toggle_signs<cr>", { silent = true, desc = "GitSignToggle" })
 map(
 	"n",
 	"<leader>gY",
