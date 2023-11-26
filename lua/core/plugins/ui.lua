@@ -464,10 +464,19 @@ return {
 	-- dims inactive portions of the code you're editing.
 	{ "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
 
-  -- 🧘 zen mode
+	-- 🧘 zen mode
 	{
 		"folke/zen-mode.nvim",
 		opts = { plugins = { tmux = { enabled = true } } },
 		cmd = { "ZenMode" },
+	},
+
+	-- A high-performance color highlighter for Neovim
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			vim.o.termguicolors = true
+			require("colorizer").setup()
+		end,
 	},
 }

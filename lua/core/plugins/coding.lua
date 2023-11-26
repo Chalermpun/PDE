@@ -360,4 +360,28 @@ return {
 			})
 		end,
 	},
+
+	-- AI
+	{
+		"Exafunction/codeium.vim",
+		event = "InsertEnter",
+		config = function()
+			vim.g.codeium_disable_bindings = 1
+			vim.keymap.set("i", "<A-m>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, desc = "Codeium Accept" })
+			vim.keymap.set("i", "<A-f>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true, desc = "Codeium Cycle Next" })
+			vim.keymap.set("i", "<A-n>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true, desc = "Codeium Cycle Prev" })
+			vim.keymap.set("i", "<A-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true, desc = "Codedium Clear" })
+			vim.keymap.set("i", "<A-s>", function()
+				return vim.fn["codeium#Complete"]()
+			end, { expr = true, desc = "Codedum Complete" })
+		end,
+	},
 }
