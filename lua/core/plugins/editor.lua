@@ -1,5 +1,11 @@
 local Util = require("core.util")
 return {
+  -- allow you to navigate seamlessly between vim and tmux splits using a consistent set of hotkeys
+	"christoomey/vim-tmux-navigator",
+
+  -- change the size of your current window.
+	"anuvyklack/hydra.nvim",
+
 	--allows all git file operations within neovim
 	"tpope/vim-fugitive",
 
@@ -294,10 +300,10 @@ return {
 	-- buffer remove
 	{
 		"echasnovski/mini.bufremove",
-
+    event = "VeryLazy",
 		keys = {
 			{
-				"<leader>bd",
+				"bd",
 				function()
 					local bd = require("mini.bufremove").delete
 					if vim.bo.modified then
@@ -323,6 +329,7 @@ return {
 	-- better diagnostics list and others
 	{
 		"folke/trouble.nvim",
+    event = "VeryLazy",
 		cmd = { "TroubleToggle", "Trouble" },
 		opts = { use_diagnostic_signs = true },
 		keys = {

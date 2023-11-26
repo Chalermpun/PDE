@@ -207,6 +207,7 @@ return {
 	-- and more.
 	{
 		"echasnovski/mini.surround",
+    event = "VeryLazy",
 		keys = function(_, keys)
 			-- Populate the keys based on the user's options
 			local plugin = require("lazy.core.config").spec.plugins["mini.surround"]
@@ -241,6 +242,7 @@ return {
 	-- comments
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
+    event = "VeryLazy",
 		lazy = true,
 		opts = {
 			enable_autocmd = false,
