@@ -220,3 +220,13 @@ map(
 	"<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').open_in_browser})<cr>",
 	{ silent = true, desc = "Git Open Repo with File" }
 )
+
+-- Easy Motion
+local hop = require("hop")
+map("n", "f", function()
+	hop.hint_char1({ current_line_only = true })
+end, { remap = true, desc = "Move to Charecter in Current Line" })
+
+map("n", "t", function()
+	hop.hint_words({ current_line_only = false })
+end, { remap = true, desc = "Move to Charecter in Other Line" })
