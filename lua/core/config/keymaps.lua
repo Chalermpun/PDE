@@ -287,3 +287,6 @@ map("n", "<leader>zh", "<cmd>CccHighlighterToggle<cr>", { desc = "Color Toggle H
 map("n", "<leader>cg", "<cmd>Neogen func<Cr>", { desc = "Func Doc" })
 map("n", "<leader>cG", "<cmd>Neogen class<Cr>", { desc = "Class Doc" })
 map("n", "<leader>cD", "<cmd>DogeGenerate<Cr>", { desc = "Generate Doc" })
+
+-- Markdown
+map("n", "<leader>pn", '<cmd>:lua require("nabla").popup()<CR>', { desc = "Nabla Popup" })

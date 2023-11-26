@@ -1,4 +1,5 @@
 local Util = require("core.util")
+local Config = require("core.config.util")
 return {
 	-- allow you to navigate seamlessly between vim and tmux splits using a consistent set of hotkeys
 	"christoomey/vim-tmux-navigator",
@@ -731,4 +732,168 @@ return {
 			vim.g.doge_mapping = ""
 		end,
 	},
+
+	-- A code outline window for skimming and quick navigation
+	{
+		desc = "Aerial Symbol Browser",
+		{
+			"stevearc/aerial.nvim",
+			event = "VeryLazy",
+			opts = function()
+				local icons = vim.deepcopy(Config.defaults.icons.kinds)
+
+				-- HACK: fix lua's weird choice for `Package` for control
+				-- structures like if/else/for/etc.
+				icons.lua = { Package = icons.Control }
+
+				---@type table<string, string[]>|false
+				local filter_kind = false
+				if Config.kind_filter then
+					filter_kind = assert(vim.deepcopy(Config.kind_filter))
+					filter_kind._ = filter_kind.default
+					filter_kind.default = nil
+				end
+
+				local opts = {
+					attach_mode = "global",
+					backends = { "lsp", "treesitter", "markdown", "man" },
+					show_guides = true,
+					layout = {
+						resize_to_content = false,
+						win_opts = {
+							winhl = "Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB",
+							signcolumn = "yes",
+							statuscolumn = " ",
+						},
+					},
+					icons = icons,
+					filter_kind = filter_kind,
+	       -- stylua: ignore
+	       guides = {
+	         mid_item   = "├╴",
+	         last_item  = "└╴",
+	         nested_top = "│ ",
+	         whitespace = "  ",
+	       },
+				}
+				return opts
+			end,
+			keys = {
+				{ "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+			},
+		},
+
+		-- Telescope integration
+		{
+			"nvim-telescope/telescope.nvim",
+			optional = true,
+			opts = function()
+				Util.on_load("telescope.nvim", function()
+					require("telescope").load_extension("aerial")
+				end)
+			end,
+			keys = {
+				{
+					"<leader>ss",
+					"<cmd>Telescope aerial<cr>",
+					desc = "Goto Symbol (Aerial)",
+				},
+			},
+		},
+
+		-- edgy integration
+		{
+			"folke/edgy.nvim",
+			optional = true,
+			opts = function(_, opts)
+				local edgy_idx = Util.plugin.extra_idx("ui.edgy")
+				local aerial_idx = Util.plugin.extra_idx("editor.aerial")
+
+				if edgy_idx and edgy_idx > aerial_idx then
+					Util.warn(
+						"The `edgy.nvim` extra must be **imported** before the `aerial.nvim` extra to work properly.",
+						{
+							title = "LazyVim",
+						}
+					)
+				end
+
+				opts.right = opts.right or {}
+				table.insert(opts.right, {
+					title = "Aerial",
+					ft = "aerial",
+					pinned = true,
+					open = "AerialOpen",
+				})
+			end,
+		},
+	},
+
+	-- Navigate file system using column view
+	{
+		"echasnovski/mini.files",
+		event = "VeryLazy",
+		opts = {
+			windows = {
+				preview = true,
+				width_focus = 30,
+				width_preview = 30,
+			},
+			options = {
+				-- Whether to use for editing directories
+				-- Disabled by default in LazyVim because neo-tree is used for that
+				use_as_default_explorer = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+				end,
+				desc = "Open mini.files (directory of current file)",
+			},
+			{
+				"<leader>fM",
+				function()
+					require("mini.files").open(vim.loop.cwd(), true)
+				end,
+				desc = "Open mini.files (cwd)",
+			},
+		},
+		config = function(_, opts)
+			require("mini.files").setup(opts)
+
+			local show_dotfiles = true
+			local filter_show = function(fs_entry)
+				return true
+			end
+			local filter_hide = function(fs_entry)
+				return not vim.startswith(fs_entry.name, ".")
+			end
+
+			local toggle_dotfiles = function()
+				show_dotfiles = not show_dotfiles
+				local new_filter = show_dotfiles and filter_show or filter_hide
+				require("mini.files").refresh({ content = { filter = new_filter } })
+			end
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "MiniFilesBufferCreate",
+				callback = function(args)
+					local buf_id = args.data.buf_id
+					-- Tweak left-hand side of mapping to your liking
+					vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "MiniFilesActionRename",
+				callback = function(event)
+					require("core.util").lsp.on_rename(event.data.from, event.data.to)
+				end,
+			})
+		end,
+	},
+
 }

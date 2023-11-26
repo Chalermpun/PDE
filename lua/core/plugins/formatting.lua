@@ -36,7 +36,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		dependencies = { "mason.nvim" },
-    event="VeryLazy",
+		event = "VeryLazy",
 		lazy = true,
 		cmd = "ConformInfo",
 		keys = {
@@ -116,4 +116,5 @@ return {
 		end,
 		config = M.setup,
 	},
+
 }

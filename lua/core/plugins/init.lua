@@ -20,7 +20,37 @@ local coding = require("core.plugins.coding")
 local colourscheme = require("core.plugins.colorscheme")
 local linting = require("core.plugins.linting")
 local util = require("core.plugins.util")
+local black = require("core.plugins.black")
+local prettier = require("core.plugins.prettier")
+local docker = require("core.plugins.lang.docker")
+local elixir = require("core.plugins.lang.elixir")
+local json = require("core.plugins.lang.json")
+local markdown = require("core.plugins.lang.markdown")
+local tex = require("core.plugins.lang.tex")
+local python_semshi = require("core.plugins.lang.python-semshi")
+local python = require("core.plugins.lang.python")
+local yaml = require("core.plugins.lang.yaml")
 
-local plugins = { formatting, lsp, editor, treesitter, coding, colourscheme, linting, util, ui }
+local plugins = {
+	formatting,
+	lsp,
+	editor,
+	treesitter,
+	coding,
+	colourscheme,
+	linting,
+	util,
+	ui,
+	black,
+	prettier,
+	docker,
+	elixir,
+	json,
+	markdown,
+	tex,
+	python_semshi,
+	python,
+	yaml,
+}
 local opts = {}
 require("lazy").setup(plugins, opts)
