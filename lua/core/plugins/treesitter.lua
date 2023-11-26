@@ -19,6 +19,13 @@ return {
 		dependencies = {
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
+				"nvim-treesitter/playground",
+				{
+					"m-demare/hlargs.nvim",
+					config = function()
+						require("hlargs").setup()
+					end,
+				},
 				config = function()
 					-- When in diff mode, we want to use the default
 					-- vim text objects c & C instead of the treesitter ones.

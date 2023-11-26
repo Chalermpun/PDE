@@ -207,7 +207,7 @@ return {
 	-- and more.
 	{
 		"echasnovski/mini.surround",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		keys = function(_, keys)
 			-- Populate the keys based on the user's options
 			local plugin = require("lazy.core.config").spec.plugins["mini.surround"]
@@ -242,7 +242,7 @@ return {
 	-- comments
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		lazy = true,
 		opts = {
 			enable_autocmd = false,
@@ -329,6 +329,35 @@ return {
 					a = a,
 				})
 			end)
+		end,
+	},
+
+	-- Create Color Code in neovim.
+	{
+		"uga-rosa/ccc.nvim",
+		opts = {},
+		cmd = { "CccPick", "CccConvert", "CccHighlighterEnable", "CccHighlighterDisable", "CccHighlighterToggle" },
+	},
+
+	-- splitting/joining blocks of code like arrays, hashes, statements, objects, dictionaries, etc
+	{
+		"Wansmer/treesj",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesj").setup({ use_default_keymaps = false })
+			local langs = require("treesj.langs")["presets"]
+			vim.api.nvim_create_autocmd({ "FileType" }, {
+				pattern = "*",
+				callback = function()
+					if langs[vim.bo.filetype] then
+						vim.keymap.set("n", "gS", "<Cmd>TSJSplit<CR>", { buffer = true, desc = "TSJSplit" })
+						vim.keymap.set("n", "gJ", "<Cmd>TSJJoin<CR>", { buffer = true, desc = "TSJJoin" })
+					else
+						vim.keymap.set("n", "gS", "<Cmd>SplitjoinSplit<CR>", { buffer = true, desc = "TSJSplit" })
+						vim.keymap.set("n", "gJ", "<Cmd>SplitjoinJoin<CR>", { buffer = true, desc = "TSJJoin" })
+					end
+				end,
+			})
 		end,
 	},
 }

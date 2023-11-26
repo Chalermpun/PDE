@@ -587,4 +587,16 @@ return {
 			})
 		end,
 	},
+
+	-- type text in a file, send it to a live REPL,
+	{
+		"jpalardy/vim-slime",
+		config = function()
+			vim.g.slime_target = "tmux"
+			vim.g.slime_default_config = {
+				socket_name = "default",
+				target_pane = "{last}",
+			}
+		end,
+	},
 }

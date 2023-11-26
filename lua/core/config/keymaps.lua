@@ -201,7 +201,6 @@ map(
 	{ expr = true, silent = true, desc = "Folding Toggle" }
 )
 
-
 -- formatting
 map({ "n", "v" }, "<leader>cf", function()
 	Util.format({ force = true })
@@ -229,6 +228,7 @@ map("n", "<leader>gt", git.toggleFugitiveGit, { desc = "FugitiveGit" })
 map("n", "<leader>gi", "<cmd>Gitignore<cr>", { desc = "FugitiveGit" })
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { silent = true, desc = "DiffviewOpen" })
 map("n", "<leader>gD", "<cmd>DiffviewClose<cr>", { silent = true, desc = "DiffviewClose" })
+map("n", "<leader>at", "<cmd>lua require('hlargs').toggle()<cr>", { silent = true, desc = "Highlight Args" })
 map(
 	"n",
 	"<leader>gY",
@@ -268,6 +268,18 @@ end, { remap = true, desc = "Move to Charecter in Other Line" })
 map("n", "-", require("oil").open, { desc = "Open parent directory" })
 
 -- Pomodoro
-map('n', '<leader>nw', '<cmd>NomoWork<cr>', {desc = "NomoWork"})
-map('n', '<leader>nb', '<cmd>NomoBreak<cr>', {desc = "NomoBreak"})
-map('n', '<leader>ns', '<cmd>NomoStop<cr>', {desc = "NomoStop"})
+map("n", "<leader>nw", "<cmd>NomoWork<cr>", { desc = "NomoWork" })
+map("n", "<leader>nb", "<cmd>NomoBreak<cr>", { desc = "NomoBreak" })
+map("n", "<leader>ns", "<cmd>NomoStop<cr>", { desc = "NomoStop" })
+
+-- Color Picker
+-- l / d / , (1 / 5 / 10) Increase the value times delta of the slider.
+-- h / s / m (1 / 5 / 10) Decrease the value times delta of the slider.
+-- mapping: H / M / L (0 / 50 / 100), 1 - 9 (10% - 90%)
+-- mapping: a Toggle show/hide alpha (transparency) slider.
+-- mapping: r Reset input and output to default, and hide alpha slider and previous colors palette.
+-- mapping: o Toggle output mode. See |ccc-option-outputs|.
+-- mapping: i Toggle input mode. See |ccc-option-inputs|.
+map("n", "<leader>zp", "<cmd>CccPick<cr>", { desc = "Color Picker" })
+map("n", "<leader>zc", "<cmd>CccConvert<cr>", { desc = "Color Convert" })
+map("n", "<leader>zh", "<cmd>CccHighlighterToggle<cr>", { desc = "Color Toggle Highlighter" })
