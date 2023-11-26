@@ -30,6 +30,9 @@ local tex = require("core.plugins.lang.tex")
 local python_semshi = require("core.plugins.lang.python-semshi")
 local python = require("core.plugins.lang.python")
 local yaml = require("core.plugins.lang.yaml")
+local dot = require("core.plugins.dot")
+local mini_hipatterns = require("core.plugins.mini-hipatterns")
+local project = require("core.plugins.project")
 
 local plugins = {
 	formatting,
@@ -51,6 +54,9 @@ local plugins = {
 	python_semshi,
 	python,
 	yaml,
+	dot,
+	mini_hipatterns,
+	project,
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

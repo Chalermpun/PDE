@@ -237,4 +237,5 @@ return {
 			end
 		end,
 	},
+  require("core.plugins.lsp.none-ls"),
 }

@@ -414,6 +414,7 @@ return {
 					":lua require('core.util').telescope.config_files()() <CR>"
 				),
 				dashboard.button("s", " " .. "  Restore Session", ':lua require("persistence").load() <CR>'),
+				dashboard.button("p", " " .. " Projects", ":Telescope projects <CR>"),
 				dashboard.button("l", "󰒲 " .. "  Lazy", ":Lazy <CR>"),
 				dashboard.button("q", " " .. "  Quit", ":qa <CR>"),
 			}
