@@ -3,7 +3,8 @@ local Util = require("core.util")
 local M = {}
 M.defaults = {
 	colorscheme = function()
-		require("tokyonight").load()
+		-- require("tokyonight").load()
+		vim.cmd("colorscheme nightfly")
 	end,
 	icons = {
 		misc = {
@@ -119,15 +120,5 @@ function M.get_kind_filter(buf)
 	---@diagnostic disable-next-line: return-type-mismatch
 	return type(M.kind_filter) == "table" and type(M.kind_filter.default) == "table" and M.kind_filter.default or nil
 end
-
-setmetatable(M, {
-	__index = function(_, key)
-		if options == nil then
-			return vim.deepcopy(M.defaults)[key]
-		end
-		---@cast options LazyVimConfig
-		return options[key]
-	end,
-})
 
 return M

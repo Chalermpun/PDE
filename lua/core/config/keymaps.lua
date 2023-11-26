@@ -230,3 +230,6 @@ end, { remap = true, desc = "Move to Charecter in Current Line" })
 map("n", "t", function()
 	hop.hint_words({ current_line_only = false })
 end, { remap = true, desc = "Move to Charecter in Other Line" })
+
+-- Directory
+map("n", "-", require("oil").open, { desc = "Open parent directory" })
