@@ -266,3 +266,8 @@ end, { remap = true, desc = "Move to Charecter in Other Line" })
 
 -- Directory
 map("n", "-", require("oil").open, { desc = "Open parent directory" })
+
+-- Pomodoro
+map('n', '<leader>nw', '<cmd>NomoWork<cr>', {desc = "NomoWork"})
+map('n', '<leader>nb', '<cmd>NomoBreak<cr>', {desc = "NomoBreak"})
+map('n', '<leader>ns', '<cmd>NomoStop<cr>', {desc = "NomoStop"})

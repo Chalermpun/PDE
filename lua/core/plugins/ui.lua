@@ -23,6 +23,7 @@ return {
 					"notify",
 					"toggleterm",
 					"lazyterm",
+					"oil",
 				},
 			},
 		},
@@ -228,9 +229,7 @@ return {
 						{ "location", padding = { left = 0, right = 1 } },
 					},
 					lualine_z = {
-						function()
-							return " " .. os.date("%R")
-						end,
+						require("nomodoro").status,
 					},
 				},
 				extensions = { "neo-tree", "lazy" },
@@ -309,6 +308,27 @@ return {
 				long_message_to_split = true,
 				inc_rename = true,
 			},
+			cmdline = {
+				enabled = true, -- enables the Noice cmdline UI
+				view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+				opts = {}, -- global options for the cmdline. See section on views
+				---@type table<string, CmdlineFormat>
+				format = {
+					-- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
+					-- view: (default is cmdline view)
+					-- opts: any options passed to the view
+					-- icon_hl_group: optional hl_group for the icon
+					-- title: set to anything or empty string to hide
+					cmdline = { pattern = "^:", icon = "", lang = "vim" },
+					search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+					search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+					filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+					lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+					help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+					input = {}, -- Used by input()
+					-- lua = false, -- to disable a format, set to `false`
+				},
+			},
 		},
     -- stylua: ignore
     keys = {
@@ -320,5 +340,113 @@ return {
       { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
       { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
     },
+	},
+
+	-- Extensible Neovim Scrollbar
+	{
+		"petertriho/nvim-scrollbar",
+		dependencies = {
+			"kevinhwang91/nvim-hlslens",
+			"folke/tokyonight.nvim",
+		},
+		config = function()
+			require("hlslens").setup()
+			require("scrollbar").setup()
+		end,
+	},
+
+	-- subcursor to show scroll direction
+	{
+		"gen740/SmoothCursor.nvim",
+		config = function()
+			require("smoothcursor").setup({
+				cursor = "",
+				fancy = {
+					enable = false, -- enable fancy mode
+					head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
+					body = {
+						{ cursor = "󰝥", texthl = "SmoothCursorRed" },
+						{ cursor = "󰝥", texthl = "SmoothCursorOrange" },
+						{ cursor = "●", texthl = "SmoothCursorYellow" },
+						{ cursor = "●", texthl = "SmoothCursorGreen" },
+						{ cursor = "•", texthl = "SmoothCursorAqua" },
+						{ cursor = ".", texthl = "SmoothCursorBlue" },
+						{ cursor = ".", texthl = "SmoothCursorPurple" },
+					},
+					tail = { cursor = nil, texthl = "SmoothCursor" },
+				},
+			})
+		end,
+	},
+
+	-- LSP context winbar from your language server.
+	{
+		"utilyre/barbecue.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("barbecue").setup()
+		end,
+	},
+
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			local alpha = require("alpha")
+			local dashboard = require("alpha.themes.dashboard")
+			local fortune = require("core.util.alpha.fortune")
+			local function header()
+				return require("core.util.alpha.logo")["random"]
+			end
+			alpha.setup(dashboard.opts)
+			dashboard.section.buttons.val = {
+				dashboard.button("f", " " .. "  Find file", ":Telescope find_files <CR>"),
+				dashboard.button("n", " " .. "  New file", ":ene | startinsert <CR>"),
+				dashboard.button("r", " " .. "  Recent file", ":Telescope oldfiles <CR>"),
+				dashboard.button("g", " " .. "  Find text", ":Telescope live_grep <CR>"),
+				dashboard.button(
+					"c",
+					" " .. "  Config",
+					":lua require('core.util').telescope.config_files()() <CR>"
+				),
+				dashboard.button("s", " " .. "  Restore Session", ':lua require("persistence").load() <CR>'),
+				dashboard.button("l", "󰒲 " .. "  Lazy", ":Lazy <CR>"),
+				dashboard.button("q", " " .. "  Quit", ":qa <CR>"),
+			}
+
+			-- dashboard.section.header.opts.hl = "AlphaHeader"
+			dashboard.opts.layout[1].val = 2
+			dashboard.section.header.val = header()
+
+			-- Disable folding on alpha buffer
+			vim.cmd([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "LazyVimStarted",
+				callback = function()
+					local stats = require("lazy").stats()
+					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+
+					-- local now = os.date "%d-%m-%Y %H:%M:%S"
+					local version = " v"
+						.. vim.version().major
+						.. "."
+						.. vim.version().minor
+						.. "."
+						.. vim.version().patch
+					local fortune = require("core.util.alpha.fortune")
+					local quote = table.concat(fortune(), "\n")
+					local plugins = "󱐌 Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+					local footer = "\t" .. version .. "\t" .. plugins .. "\n" .. quote
+					dashboard.section.footer.val = footer
+					pcall(vim.cmd.AlphaRedraw)
+				end,
+			})
+		end,
 	},
 }

@@ -560,59 +560,31 @@ return {
 		},
 	},
 
-	-- LSP context winbar from your language server.
+	-- focus and maybe protect your left-rotated neck
 	{
-		"utilyre/barbecue.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons",
-		},
+		"nyngwang/NeoZoom.lua",
 		config = function()
-			require("barbecue").setup()
+			require("neo-zoom").setup({})
 		end,
 	},
 
-	-- subcursor to show scroll direction
+	-- Nvim + Pomodoro!
 	{
-		"gen740/SmoothCursor.nvim",
+		"dbinagi/nomodoro",
 		config = function()
-			require("smoothcursor").setup({
-				cursor = "",
-				fancy = {
-					enable = false, -- enable fancy mode
-					head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
-					body = {
-						{ cursor = "󰝥", texthl = "SmoothCursorRed" },
-						{ cursor = "󰝥", texthl = "SmoothCursorOrange" },
-						{ cursor = "●", texthl = "SmoothCursorYellow" },
-						{ cursor = "●", texthl = "SmoothCursorGreen" },
-						{ cursor = "•", texthl = "SmoothCursorAqua" },
-						{ cursor = ".", texthl = "SmoothCursorBlue" },
-						{ cursor = ".", texthl = "SmoothCursorPurple" },
-					},
-					tail = { cursor = nil, texthl = "SmoothCursor" },
+			require("nomodoro").setup({
+				work_time = 25,
+				break_time = 5,
+				menu_available = true,
+				texts = {
+					on_break_complete = "TIME IS UP!",
+					on_work_complete = "TIME IS UP!",
+					status_icon = " ",
+					timer_format = "!%0M:%0S", -- To include hours: '!%0H:%0M:%0S'
 				},
+				on_work_complete = function() end,
+				on_break_complete = function() end,
 			})
 		end,
 	},
-
-	-- Extensible Neovim Scrollbar
-	{
-		"petertriho/nvim-scrollbar",
-		dependencies = {
-			"kevinhwang91/nvim-hlslens",
-			"folke/tokyonight.nvim",
-		},
-		config = function()
-			require("scrollbar").setup()
-		end,
-	},
-
-  -- focus and maybe protect your left-rotated neck
-  {"nyngwang/NeoZoom.lua",
-  config = function()
-      require("neo-zoom").setup({})
-    end}
 }

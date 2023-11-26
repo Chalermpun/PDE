@@ -18,7 +18,9 @@ local editor = require("core.plugins.editor")
 local treesitter = require("core.plugins.treesitter")
 local coding = require("core.plugins.coding")
 local colourscheme = require("core.plugins.colorscheme")
+local linting = require("core.plugins.linting")
+local util = require("core.plugins.util")
 
-local plugins = { formatting, ui, lsp, editor, treesitter, coding, colourscheme }
+local plugins = { formatting, ui, lsp, editor, treesitter, coding, colourscheme, linting, util }
 local opts = {}
 require("lazy").setup(plugins, opts)
