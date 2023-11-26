@@ -111,12 +111,10 @@ map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<C-w>|", "<cmd>WindowsMaximize<cr>", { desc = "Window Maximization", remap = true })
+map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Window Maximization", remap = true })
+map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Window Equalization", remap = true })
+map("n", "<leader>y", ":lua require('nvim-window').pick()<CR>", { desc = "Pick windows", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -283,3 +281,9 @@ map("n", "<leader>ns", "<cmd>NomoStop<cr>", { desc = "NomoStop" })
 map("n", "<leader>zp", "<cmd>CccPick<cr>", { desc = "Color Picker" })
 map("n", "<leader>zc", "<cmd>CccConvert<cr>", { desc = "Color Convert" })
 map("n", "<leader>zh", "<cmd>CccHighlighterToggle<cr>", { desc = "Color Toggle Highlighter" })
+
+
+-- Document Generation
+map("n", "<leader>cg", "<cmd>Neogen func<Cr>", { desc = "Func Doc" })
+map("n", "<leader>cG", "<cmd>Neogen class<Cr>", { desc = "Class Doc" })
+map("n", "<leader>cD", "<cmd>DogeGenerate<Cr>", { desc = "Generate Doc" })

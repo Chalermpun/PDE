@@ -449,4 +449,25 @@ return {
 			})
 		end,
 	},
+
+	-- cellular automaton animations based on the content of neovim buffer.
+	"eandrju/cellular-automaton.nvim",
+
+	-- A screensaver plugin for neovim.
+	{
+		"tamton-aquib/zone.nvim",
+	},
+
+	-- a calendar application for vim
+	{ "itchyny/calendar.vim", cmd = { "Calendar" } },
+
+	-- dims inactive portions of the code you're editing.
+	{ "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
+
+  -- 🧘 zen mode
+	{
+		"folke/zen-mode.nvim",
+		opts = { plugins = { tmux = { enabled = true } } },
+		cmd = { "ZenMode" },
+	},
 }

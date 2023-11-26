@@ -599,4 +599,136 @@ return {
 			}
 		end,
 	},
+
+	-- Smooth scrolling for window movement commands
+	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup({
+				easing_function = "quadratic", -- Default easing function
+				-- Set any other options as needed
+			})
+
+			local t = {}
+			-- Syntax: t[keys] = {function, {function arguments}}
+			-- Use the "sine" easing function
+			t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "350", [['sine']] } }
+			t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "350", [['sine']] } }
+			-- Use the "circular" easing function
+			t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
+			t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
+			-- Pass "nil" to disable the easing animation (constant scrolling speed)
+			t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
+			t["<C-e>"] = { "scroll", { "0.10", "false", "100", nil } }
+			-- When no easing function is provided the default easing function (in this case "quadratic") will be used
+			t["zt"] = { "zt", { "300" } }
+			t["zz"] = { "zz", { "300" } }
+			t["zb"] = { "zb", { "300" } }
+
+			require("neoscroll.config").set_mappings(t)
+		end,
+	},
+
+	-- A simple and opinionated NeoVim plugin for switching between windows in the current tab page.
+	{
+		"https://gitlab.com/yorickpeterse/nvim-window.git",
+		config = function()
+			require("nvim-window").setup({
+				normal_hl = "BlackOnLightYellow",
+				hint_hl = "Bold",
+				border = "none",
+			})
+		end,
+	},
+
+	-- Animated expand width of the current window;
+	{
+		"anuvyklack/windows.nvim",
+		dependencies = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
+		config = function()
+			require("windows").setup({
+				autowidth = { --		       |windows.autowidth|
+					enable = false,
+					winwidth = 5, --		        |windows.winwidth|
+					filetype = { --	      |windows.autowidth.filetype|
+						help = 2,
+					},
+				},
+				ignore = { --			  |windows.ignore|
+					buftype = { "quickfix" },
+					filetype = {
+						"diffviewfilepanel",
+						"NvimTree",
+						"DiffviewFilePanel",
+						"neo-tree",
+						"undotree",
+						"gundo",
+					},
+				},
+			})
+		end,
+	},
+
+	-- Vim-doge is a (Do)cumentation (Ge)nerator which will generate a proper documentation skeleton based on certain expressions (mainly functions).
+	{
+		"kkoomen/vim-doge",
+		build = function()
+			vim.cmd([[call doge#install()]])
+		end,
+		dependencies = {
+			{
+				"danymat/neogen",
+				config = function()
+					require("neogen").setup({
+						snippet_engine = "luasnip",
+						enabled = true,
+						languages = {
+							lua = {
+								template = {
+									annotation_convention = "ldoc",
+								},
+							},
+							python = {
+								template = {
+									annotation_convention = "google_docstrings",
+								},
+							},
+							rust = {
+								template = {
+									annotation_convention = "rustdoc",
+								},
+							},
+							javascript = {
+								template = {
+									annotation_convention = "jsdoc",
+								},
+							},
+							typescript = {
+								template = {
+									annotation_convention = "tsdoc",
+								},
+							},
+							typescriptreact = {
+								template = {
+									annotation_convention = "tsdoc",
+								},
+							},
+						},
+					})
+				end,
+			},
+		},
+		config = function()
+			vim.g.doge_enable_mappings = 1
+			vim.g.doge_doc_standard_python = "numpy"
+			vim.g.doge_mapping_comment_jump_forward = "<C-j>"
+			vim.g.doge_mapping_comment_jump_backward = "<C-k>"
+			vim.g.doge_buffer_mappings = 1
+			vim.g.doge_comment_jump_modes = { "n", "i", "s" }
+			vim.g.doge_mapping = ""
+		end,
+	},
 }
