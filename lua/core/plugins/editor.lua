@@ -409,7 +409,7 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{
-				"<leader>fE",
+				"<leader>fe",
 				function()
 					require("neo-tree.command").execute({ toggle = true, dir = Util.root() })
 				end,
