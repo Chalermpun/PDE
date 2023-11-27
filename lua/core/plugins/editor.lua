@@ -300,6 +300,7 @@ return {
 	},
 
 	-- buffer remove
+	"famiu/bufdelete.nvim",
 	{
 		"echasnovski/mini.bufremove",
 		event = "VeryLazy",
