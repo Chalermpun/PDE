@@ -33,6 +33,8 @@ local yaml = require("core.plugins.lang.yaml")
 local dot = require("core.plugins.dot")
 local mini_hipatterns = require("core.plugins.mini-hipatterns")
 local project = require("core.plugins.project")
+local dap_core = require("core.plugins.dap.core")
+local dap_nlua = require("core.plugins.dap.nlua")
 
 local plugins = {
 	formatting,
@@ -57,6 +59,8 @@ local plugins = {
 	dot,
 	mini_hipatterns,
 	project,
+	dap_core,
+	dap_nlua,
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

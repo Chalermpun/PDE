@@ -171,6 +171,7 @@ map("n", "<leader>it", "<cmd>IBLToggle<cr>", { desc = "Indent Blankline Toggle" 
 map("n", "<leader>rt", "<cmd>ScrollbarToggle<cr>", { desc = "ScrollbarToggle" })
 map("n", "<leader>rc", "<cmd>SmoothCursorToggle<cr>", { desc = "SmoothCursorToggle" })
 map("n", "<leader>zz", "<cmd>NeoZoomToggle<cr>", { desc = "NeoZoomToggle" })
+map("n", "<leader>il", "<cmd>IlluminateToggle<cr>", { desc = "IlluminateToggle" })
 map(
 	"n",
 	"<leader>bt",
@@ -282,7 +283,6 @@ map("n", "<leader>zp", "<cmd>CccPick<cr>", { desc = "Color Picker" })
 map("n", "<leader>zc", "<cmd>CccConvert<cr>", { desc = "Color Convert" })
 map("n", "<leader>zh", "<cmd>CccHighlighterToggle<cr>", { desc = "Color Toggle Highlighter" })
 
-
 -- Document Generation
 map("n", "<leader>cg", "<cmd>Neogen func<Cr>", { desc = "Func Doc" })
 map("n", "<leader>cG", "<cmd>Neogen class<Cr>", { desc = "Class Doc" })
@@ -290,3 +290,26 @@ map("n", "<leader>cD", "<cmd>DogeGenerate<Cr>", { desc = "Generate Doc" })
 
 -- Markdown
 map("n", "<leader>pn", '<cmd>:lua require("nabla").popup()<CR>', { desc = "Nabla Popup" })
+
+-- goto-preview
+map("n", "gpd", " <cmd>lua require('goto-preview').goto_preview_definition()<CR>", { desc = "Goto Preview Definition" })
+map(
+	"n",
+	"gpt",
+	" <cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+	{ desc = "Goto Preview Type Definition" }
+)
+map(
+	"n",
+	"gpi",
+	" <cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+	{ desc = "Goto Preview Implementation" }
+)
+map(
+	"n",
+	"gpD",
+	" <cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
+	{ desc = "Goto Preview Declaration" }
+)
+map("n", "gP", " <cmd>lua require('goto-preview').close_all_win()<CR>", { desc = "Goto Preview Close All" })
+map("n", "gpr", " <cmd>lua require('goto-preview').goto_preview_references()<CR>", { desc = "Goto Preview References" })
