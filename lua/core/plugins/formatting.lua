@@ -84,7 +84,7 @@ return {
 			local opts = {
 				-- NeoVim will use these options when formatting with the conform.nvim formatter
 				format = {
-					timeout_ms = 3000,
+					timeout_ms = 10000,
 					async = false, -- not recommended to change
 					quiet = false, -- not recommended to change
 				},
