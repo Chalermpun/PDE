@@ -69,6 +69,14 @@ return {
 			for _, ft in ipairs({ "markdown", "norg", "rmd", "org" }) do
 				opts[ft] = {
 					headline_highlights = {},
+					codeblock_highlight = "CodeBlock",
+					dash_highlight = "Dash",
+					dash_string = "-",
+					quote_highlight = "Quote",
+					quote_string = "┃",
+					fat_headlines = true,
+					fat_headline_upper_string = "▃",
+					fat_headline_lower_string = "󰕱",
 				}
 				for i = 1, 6 do
 					local hl = "Headline" .. i
