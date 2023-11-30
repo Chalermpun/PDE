@@ -197,7 +197,7 @@ map(
 	"n",
 	"<leader>rl",
 	[[&cursorline ? ":lua vim.opt.cursorline=false\<cr>" : ":set cursorline\<cr>"]],
-	{ expr = true, silent = true, desc = "Folding Toggle" }
+	{ expr = true, silent = true, desc = "CursorLine Toggle" }
 )
 
 -- formatting
