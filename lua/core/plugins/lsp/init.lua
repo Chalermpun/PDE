@@ -1,5 +1,12 @@
 local Util = require("core.util")
 return {
+	-- provides a command for LSP renaming with immediate visual feedback
+	{
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	},
 	-- cmdline tools and lsp servers
 	{
 		"neovim/nvim-lspconfig",
@@ -237,5 +244,5 @@ return {
 			end
 		end,
 	},
-  require("core.plugins.lsp.none-ls"),
+	require("core.plugins.lsp.none-ls"),
 }

@@ -255,11 +255,11 @@ map(
 
 -- Easy Motion
 local hop = require("hop")
-map("n", "f", function()
+map({"n", "v"}, "f", function()
 	hop.hint_char1({ current_line_only = true })
 end, { remap = true, desc = "Move to Charecter in Current Line" })
 
-map("n", "t", function()
+map({"n", "v"}, "t", function()
 	hop.hint_words({ current_line_only = false })
 end, { remap = true, desc = "Move to Charecter in Other Line" })
 
