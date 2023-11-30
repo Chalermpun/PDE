@@ -255,13 +255,43 @@ map(
 
 -- Easy Motion
 local hop = require("hop")
-map({"n", "v"}, "f", function()
+map({ "n", "v" }, "f", function()
 	hop.hint_char1({ current_line_only = true })
 end, { remap = true, desc = "Move to Charecter in Current Line" })
 
-map({"n", "v"}, "t", function()
+map({ "n", "v" }, "t", function()
 	hop.hint_words({ current_line_only = false })
 end, { remap = true, desc = "Move to Charecter in Other Line" })
+
+vim.keymap.set("n", "vp", function()
+	vim.cmd([[:HopLineStartMW]])
+	vim.schedule(function()
+		vim.cmd([[normal! p]]) --> paste
+	end)
+end, { noremap = true, silent = true, desc = "Hop Paste Below Without Enter" })
+
+vim.keymap.set("n", "<Leader>vp", function()
+	vim.cmd([[:HopLineStartMW]])
+	vim.schedule(function()
+		vim.cmd([[normal! o]]) --> make new line below target
+		vim.cmd([[normal! p]]) --> paste
+	end)
+end, { noremap = true, silent = true, desc = "Hop Paste Below With Enter" })
+
+vim.keymap.set("n", "vP", function()
+	vim.cmd([[:HopLineStartMW]])
+	vim.schedule(function()
+		vim.cmd([[normal! P]]) --> paste
+	end)
+end, { noremap = true, silent = true, desc = "Hop Paste Above Without Enter" })
+
+vim.keymap.set("n", "<Leader>vP", function()
+	vim.cmd([[:HopLineStartMW]])
+	vim.schedule(function()
+		vim.cmd([[normal! O]]) --> make another new line below target
+		vim.cmd([[normal! P]]) --> paste
+	end)
+end, { noremap = true, silent = true, desc = "Hop Paste Above With Enter" })
 
 -- Directory
 map("n", "-", require("oil").open, { desc = "Open parent directory" })
