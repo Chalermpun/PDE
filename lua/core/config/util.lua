@@ -1,7 +1,7 @@
 local M = {}
 M.defaults = {
 	colorscheme = function()
-		vim.cmd("colorscheme nightfly")
+		vim.cmd("colorscheme github_dark_colorblind")
 
 		-- change the highlight style
 		vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
