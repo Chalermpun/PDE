@@ -50,6 +50,7 @@ git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~
 # Update the Zsh configuration file (.zshrc) with the new plugins
 sed 's/^plugins=(git/plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-fzf-history-search/g' ~/.zshrc >~/zshrc.txt
 mv ~/zshrc.txt ~/.zshrc
+pip3 install pynvim --upgrade 
 
 
 
@@ -97,3 +98,4 @@ curl -fLo font.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.
 unzip font.zip
 fc-cache -fv
 tmux -u
+pip3 install pynvim --upgrade 
