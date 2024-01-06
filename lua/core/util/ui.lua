@@ -10,12 +10,13 @@ local M = {}
 function M.get_signs(buf, lnum)
 	-- Get regular signs
 	---@type Sign[]
-	local signs = vim.tbl_map(function(sign)
-		---@type Sign
-		local ret = vim.fn.sign_getdefined(sign.name)[1]
-		ret.priority = sign.priority
-		return ret
-	end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)
+	-- local signs = vim.tbl_map(function(sign)
+	-- 	---@type Sign
+	-- 	local ret = vim.fn.sign_getdefined(sign.name)[1]
+	-- 	ret.priority = sign.priority
+	-- 	return ret
+	-- end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)
+  local signs = {}
 
 	-- Get extmark signs
 	local extmarks = vim.api.nvim_buf_get_extmarks(
