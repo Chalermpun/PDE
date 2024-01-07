@@ -72,6 +72,16 @@ return {
 		end,
 	},
 
+	--git branch viewer
+	{
+		"rbong/vim-flog",
+		lazy = true,
+		cmd = { "Flog", "Flogsplit", "Floggit" },
+		dependencies = {
+			"tpope/vim-fugitive",
+		},
+	},
+
 	-- Automatically highlights other instances of the word under your cursor.
 	-- This works with LSP, Treesitter, and regexp matching to find the other
 	-- instances.
