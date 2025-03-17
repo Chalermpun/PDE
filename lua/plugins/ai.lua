@@ -6,7 +6,7 @@ return {
       local home = vim.fn.expand("$HOME")
       require("chatgpt").setup({
         api_key_cmd = "cat " .. home .. "/.chat",
-        api_host_cmd = "echo http://10.204.100.79:11700",
+        api_host_cmd = "echo http://10.204.100.76:11000",
         yank_register = "+",
         edit_with_instructions = {
           diff = false,
@@ -231,7 +231,7 @@ return {
         providers = {
           openai = {
             disable = false,
-            endpoint = "http://10.204.100.79:11700/v1/chat/completions",
+            endpoint = "http://10.204.100.76:11000/v1/chat/completions",
           },
         },
         cmd_prefix = "Gp",

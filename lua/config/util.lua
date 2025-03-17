@@ -1,7 +1,7 @@
 local M = {}
 M.defaults = {
 	colorscheme = function()
-		vim.cmd("colorscheme nightfly")
+		-- vim.cmd("colorscheme nightfly")
 	end,
 	icons = {
 		misc = {

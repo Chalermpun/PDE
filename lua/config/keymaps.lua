@@ -119,11 +119,17 @@ vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error"
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
-
-vim.api.nvim_set_keymap('n', '<leader>ch', ':highlight Cursor gui=reverse guifg=NONE guibg=NONE<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>ch",
+	":highlight Cursor gui=reverse guifg=NONE guibg=NONE<CR>",
+	{ noremap = true, silent = true }
+)
 
 -- Control Size split
 vim.keymap.set("n", "<M-Left>", "<c-w>5<")
 vim.keymap.set("n", "<M-Right>", "<c-w>5>")
 vim.keymap.set("n", "<M-Up>", "<c-w>+")
 vim.keymap.set("n", "<M-Down>", "<c-w>-")
+
+vim.api.nvim_set_keymap("n", ".", ".", { noremap = true, silent = true })
