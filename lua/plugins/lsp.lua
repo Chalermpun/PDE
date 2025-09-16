@@ -115,10 +115,10 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        "black",
-        "isort",
         "prettier",
         "markdownlint",
+        "ruff",
+        "mypy",
       },
     },
     config = function(_, opts)
@@ -128,7 +128,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "pyright", "yamlls", "jsonls" } })
+      require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls", "jsonls", "marksman" } })
     end,
   },
   {
@@ -150,8 +150,8 @@ return {
     },
     config = function()
       local lspconfig = require("lspconfig")
+      lspconfig.marksman.setup({})
       lspconfig.lua_ls.setup({})
-      lspconfig.pyright.setup({})
       lspconfig.yamlls.setup({
         settings = {
           yaml = {
