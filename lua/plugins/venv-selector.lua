@@ -5,7 +5,7 @@ return {
   opts = {
     parents = 3,
     stay_on_this_version = true,
-    name = { "env", "venv" },
+    name = { "env", "venv", ".env", ".venv" },
   },
   config = function(_, opts)
     require("venv-selector").setup(opts)

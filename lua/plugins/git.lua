@@ -131,7 +131,7 @@ return {
 		"SuperBo/fugit2.nvim",
 		opts = {
 			width = 100,
-			libgit2_path = "libgit2.so.1.7",
+			libgit2_path = "/opt/homebrew/opt/libgit2@1.7/lib/libgit2.1.7.dylib",
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
