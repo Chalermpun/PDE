@@ -6,6 +6,56 @@ local function setup_diagnostics()
 	end
 end
 
+function yank_children_with_signature()
+	local callback = function(display)
+		local node = display.focus_node
+
+		if not node.children or #node.children == 0 then
+			vim.notify("No children found in this node", vim.log.levels.WARN)
+			return
+		end
+
+		local navic = require("nvim-navic.lib")
+		local lines = {}
+
+		for _, child in ipairs(node.children) do
+			local kind = navic.adapt_lsp_num_to_str(child.kind)
+			local line = child.name
+
+			if child.detail and child.detail ~= "" then
+				local detail = child.detail:gsub("^%s+", ""):gsub("%s+$", "")
+				line = string.format("%s%s", child.name, detail:match("%(.*%)") or "")
+
+				local return_type = detail:match("%->%s*(.+)") or detail:match(":%s*(.+)")
+				if return_type then
+					line = line .. " -> " .. return_type
+				end
+			end
+
+			if kind == "Method" or kind == "Function" then
+				line = "def " .. line
+			elseif kind == "Field" or kind == "Property" then
+				line = "    " .. line
+			end
+
+			table.insert(lines, line)
+		end
+
+		local text = table.concat(lines, "\n")
+		vim.fn.setreg("+", text)
+		vim.fn.setreg('"', text)
+
+		vim.notify(string.format("Copied %d members with signatures", #lines), vim.log.levels.INFO)
+
+		display:close()
+	end
+
+	return {
+		callback = callback,
+		description = "Copy all children with full signatures",
+	}
+end
+
 local function setup_navbuddy()
 	local navbuddy = require("nvim-navbuddy")
 	local actions = require("nvim-navbuddy.actions")
@@ -55,6 +105,7 @@ local function setup_navbuddy()
 			["s"] = actions.toggle_preview(),
 			["<C-v>"] = actions.vsplit(),
 			["<C-s>"] = actions.hsplit(),
+			["C"] = yank_children_with_signature(),
 			["t"] = actions.telescope({
 				layout_config = {
 					height = 0.60,
@@ -139,7 +190,7 @@ return {
 			"b0o/schemastore.nvim",
 			{
 				"SmiteshP/nvim-navbuddy",
-				dependencies = { "SmiteshP/nvim-navic", "MunifTanjim/nui.nvim" },
+				dependencies = { "SmiteshP/nvim-navic", "MunifTanjim/nui.nvim", { "numToStr/Comment.nvim" } },
 				opts = {
 					lsp = { auto_attach = true },
 					format = {
