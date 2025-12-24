@@ -11,6 +11,7 @@ return {
           markdown = { "markdownlint" },
           javascript = { "prettier" },
           yaml = { "prettier" },
+          ["monkey-c"] = { "prettier_monkeyc" },
         },
         format_after_save = {
           lsp_fallback = true,
@@ -22,6 +23,16 @@ return {
             args = { "run", "ruff", "--fix", "--stdin-filename", "$FILENAME" },
             stdin = true,
           },
+          prettier_monkeyc = {
+            command = "npx",
+            args = {
+              "prettier",
+              "$FILENAME",
+              "--plugin=@markw65/prettier-plugin-monkeyc",
+            },
+            stdin = true,
+          },
+
         },
       })
 
