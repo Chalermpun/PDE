@@ -208,4 +208,86 @@ return {
       require("dap-python").setup(path .. "/venv/bin/python")
     end,
   },
+  {
+    "puremourning/vimspector",
+    ft = "rust",
+    keys = {
+      {
+        "<leader>dv",
+        "<cmd>call vimspector#Launch()<cr>",
+        desc = "Vimspector Launch (Rust)",
+        ft = "rust",
+      },
+      {
+        "<leader>dt",
+        "<cmd>call vimspector#Reset()<cr>",
+        desc = "Vimspector Reset (Rust)",
+        ft = "rust",
+      },
+
+      -- Breakpoints
+      {
+        "<leader>db",
+        "<cmd>call vimspector#ToggleBreakpoint()<cr>",
+        desc = "Toggle Breakpoint (Rust)",
+        ft = "rust",
+      },
+
+      -- Stepping
+      {
+        "<leader>dO",
+        "<cmd>call vimspector#StepOver()<cr>",
+        desc = "Step Over (Rust)",
+        ft = "rust",
+      },
+      {
+        "<leader>di",
+        "<cmd>call vimspector#StepInto()<cr>",
+        desc = "Step Into (Rust)",
+        ft = "rust",
+      },
+      {
+        "<leader>do",
+        "<cmd>call vimspector#StepOut()<cr>",
+        desc = "Step Out (Rust)",
+        ft = "rust",
+      },
+
+      -- Continue / Stop
+      {
+        "<leader>dc",
+        "<cmd>call vimspector#Continue()<cr>",
+        desc = "Continue (Rust)",
+        ft = "rust",
+      },
+      {
+        "<leader>dq",
+        "<cmd>call vimspector#Stop()<cr>",
+        desc = "Stop (Rust)",
+        ft = "rust",
+      },
+
+      -- Watch / Eval
+      {
+        "<leader>dw",
+        "<cmd>call vimspector#AddWatch()<cr>",
+        desc = "Add Watch (Rust)",
+        ft = "rust",
+      },
+      {
+        "<leader>de",
+        "<cmd>call vimspector#Evaluate()<cr>",
+        desc = "Evaluate (Rust)",
+        mode = { "n", "v" },
+        ft = "rust",
+      },
+    },
+
+    config = function()
+      vim.g.vimspector_enable_mappings = "HUMAN"
+      vim.g.vimspector_install_gadgets = {
+        "CodeLLDB",
+      }
+    end,
+  }
 }

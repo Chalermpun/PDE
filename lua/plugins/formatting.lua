@@ -8,9 +8,10 @@ return {
         formatters_by_ft = {
           python = { "ruff_organize_imports", "ruff_format" },
           lua = { "stylua" },
-          markdown = { "markdownlint" },
+          markdown = { "prettier" },
           javascript = { "prettier" },
           yaml = { "prettier" },
+          rust = { "rustfmt" },
           ["monkey-c"] = { "prettier_monkeyc" },
         },
         format_after_save = {

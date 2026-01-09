@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>ul", function()
   toggle.number()
 end, { desc = "Toggle Line Numbers" })
 
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 2
 vim.keymap.set("n", "<leader>uc", function()
   if vim.o.conceallevel == 0 then
     vim.o.conceallevel = conceallevel
