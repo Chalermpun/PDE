@@ -1,8 +1,7 @@
 return {
-  "nvim-treesitter/playground",
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false,
+    checkout = 'master',
     build = ":TSUpdate",
     event = { "VeryLazy" },
     init = function(plugin)

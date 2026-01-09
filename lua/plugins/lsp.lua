@@ -586,14 +586,33 @@ return {
       },
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      local configs = require("lspconfig.configs")
-      setup_monkeyc(lspconfig, configs)
+      -- local lspconfig = require("lspconfig")
+      -- local configs = require("lspconfig.configs")
+      -- setup_monkeyc(lspconfig, configs)
 
-      lspconfig.pyright.setup({})
-      lspconfig.marksman.setup({})
-      lspconfig.lua_ls.setup({})
-      lspconfig.yamlls.setup({
+      vim.lsp.config("pyright", {})
+      vim.lsp.enable("pyright")
+
+      vim.lsp.config("rust_analyzer", {
+        settings = {
+          ['rust-analyzer'] = {
+            diagnostics = {
+              enable = true,
+            }
+          }
+        }
+      })
+      vim.lsp.enable("rust_analyzer")
+
+      vim.lsp.config("marksman", {})
+      vim.lsp.enable("marksman")
+
+
+      vim.lsp.config("lua_ls", {})
+      vim.lsp.enable("lua_ls")
+
+
+      vim.lsp.config("yamlls", {
         settings = {
           yaml = {
             schemaStore = {
@@ -604,7 +623,9 @@ return {
           },
         },
       })
-      require("lspconfig").jsonls.setup({
+      vim.lsp.enable("yamlls")
+
+      vim.lsp.config("jsonls", {
         settings = {
           json = {
             schemas = require("schemastore").json.schemas({
@@ -617,6 +638,7 @@ return {
           },
         },
       })
+      vim.lsp.enable("jsonls")
       setup_navbuddy()
       setup_keymaps(setup_diagnostics())
       local signs = require("config.util").defaults.icons.diagnostics
