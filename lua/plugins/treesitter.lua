@@ -100,7 +100,7 @@ return {
     enabled = true,
     opts = { mode = "cursor", max_lines = 3 },
     config = function(_, opts)
-      vim.keymap.set("n", "<leader>Tc", "<cmd>TSContextToggle<CR>", { desc = "Toggle Treesitter Context" })
+      vim.keymap.set("n", "<leader>Tc", "<cmd>TSContext toggle<CR>", { desc = "Toggle Treesitter Context" })
     end,
   },
   {
