@@ -70,27 +70,19 @@ return {
 		end,
 	},
 	  {
-    "brianhuster/live-preview.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "ibhagwan/fzf-lua",
-      "echasnovski/mini.pick",
-      "folke/snacks.nvim",
-    },
+    "selimacerbas/mermaid-playground.nvim",
+    dependencies = { "barrett-ruth/live-server.nvim" },
     config = function()
-      require("live-preview").setup()
-
-      vim.o.autowriteall = true
-
-      vim.api.nvim_create_autocmd(
-        { "InsertLeave", "TextChanged", "TextChangedI" },
-        {
-          pattern = "*",
-          callback = function()
-            vim.cmd("silent! write")
-          end,
-        }
-      )
+      require("mermaid_playground").setup({
+        workspace_dir            = nil,
+        index_name               = "index.html",
+        diagram_name             = "diagram.mmd",
+        overwrite_index_on_start = false,
+        auto_refresh             = true,
+        auto_refresh_events      = { "InsertLeave", "TextChanged", "TextChangedI", "BufWritePost" },
+        debounce_ms              = 450,
+        notify_on_refresh        = false,
+      })
     end,
   }
 }
