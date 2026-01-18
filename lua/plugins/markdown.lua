@@ -71,7 +71,16 @@ return {
 	},
 	  {
     "selimacerbas/mermaid-playground.nvim",
-    dependencies = { "barrett-ruth/live-server.nvim" },
+    dependencies = {
+      "barrett-ruth/live-server.nvim",
+      lazy = false,
+      config = function()
+        require("live-server").setup({
+          port = 5500,
+          open = true,
+        })
+      end,
+    },
     config = function()
       require("mermaid_playground").setup({
         workspace_dir            = nil,
