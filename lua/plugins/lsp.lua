@@ -609,7 +609,24 @@ return {
       vim.lsp.enable("marksman")
 
 
-      vim.lsp.config("lua_ls", {})
+      vim.lsp.config('lua_ls', {
+        cmd = { 'lua-language-server' },
+        filetypes = { 'lua' },
+        root_markers = {
+          ".luarc.json",
+          ".luarc.jsonc",
+          ".luacheckrc",
+          ".stylua.toml",
+          ".git",
+        },
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            }
+          }
+        }
+      })
       vim.lsp.enable("lua_ls")
 
 
@@ -640,6 +657,18 @@ return {
         },
       })
       vim.lsp.enable("jsonls")
+      vim.lsp.config("cssls", {
+        cmd = { "vscode-css-language-server", "--stdio" },
+        filetypes = { "css", "scss", "less" },
+        init_options = { provideFormatter = true },
+        single_file_support = true,
+        settings = {
+          css = { validate = true },
+          scss = { validate = true },
+          less = { validate = true },
+        },
+      })
+      vim.lsp.enable("cssls")
       setup_navbuddy()
       setup_keymaps(setup_diagnostics())
       local signs = require("config.util").defaults.icons.diagnostics
