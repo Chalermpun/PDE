@@ -590,8 +590,17 @@ return {
       -- local configs = require("lspconfig.configs")
       -- setup_monkeyc(lspconfig, configs)
 
-      vim.lsp.config("pyright", {})
-      vim.lsp.enable("pyright")
+      local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
+
+      lspconfig.pyright.setup({
+        root_dir = util.root_pattern(
+          "pyproject.toml",
+          "setup.py",
+          "setup.cfg",
+          ".git"
+        ),
+      })
 
       vim.lsp.config("rust_analyzer", {
         cmd = { "rust-analyzer" },
